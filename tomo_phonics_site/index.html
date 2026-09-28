@@ -21,7 +21,7 @@
     .slide{display:none;position:relative;margin:auto;aspect-ratio:4/3;max-width:1080px;background:#fff;box-shadow:var(--shadow);overflow:hidden;border-radius:14px}
     .slide.active{display:block}
     .slide img{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
-    .audio-btn{position:absolute;transform:translate(-50%,-50%);width:40px;height:40px;border-radius:50%;border:2px solid rgba(255,255,255,.95);background:rgba(11,132,255,.94);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 7px 18px rgba(0,78,158,.24);transition:transform .12s ease,background .12s ease;z-index:5}
+    .audio-btn{position:absolute;transform:translate(-50%,-50%);width:34px;height:34px;border-radius:50%;border:2px solid rgba(255,255,255,.95);background:rgba(11,132,255,.94);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 7px 18px rgba(0,78,158,.24);transition:transform .12s ease,background .12s ease;z-index:5}
     .audio-btn:hover{transform:translate(-50%,-50%) scale(1.08)}
     .audio-btn:active{transform:translate(-50%,-50%) scale(.95)}
     .audio-btn.playing{background:#143e52}
@@ -32,7 +32,7 @@
     .controls button{border:0;border-radius:999px;background:#fff;color:var(--ink);padding:10px 18px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(17,47,63,.09)}
     .counter{min-width:76px;text-align:center;font-weight:800}
     footer{text-align:center;font-size:12px;opacity:.58;padding:0 16px 36px}
-    @media (max-width:700px){.topbar{padding:10px 12px}.brand{font-size:14px}.brand small{font-size:10px}main{padding:12px 8px 36px}.slide{border-radius:8px}.audio-btn{width:34px;height:34px}.audio-btn svg{width:19px;height:19px}.hint{font-size:12px;margin-bottom:10px}.controls{margin-top:12px}}
+    @media (max-width:700px){.topbar{padding:10px 12px}.brand{font-size:14px}.brand small{font-size:10px}main{padding:12px 8px 36px}.slide{border-radius:8px}.audio-btn{width:30px;height:30px}.audio-btn svg{width:19px;height:19px}.hint{font-size:12px;margin-bottom:10px}.controls{margin-top:12px}}
   </style>
 </head>
 <body>
@@ -50,12 +50,12 @@ const pauseIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v1
 // x/y are percentages within the original 4:3 slide.
 const hotspots = {
   3: [
-    ['dog',54.0,41.5], ['dentist',58.6,54.5], ['door',54.3,67.3], ['dad',52.9,80.2],
-    ['bad',93.0,41.5], ['mad',93.0,54.5], ['salad',94.1,67.3], ['hand',94.0,80.2]
+    ['dog',53.7,41.5], ['dentist',58.7,54.5], ['door',54.0,67.3], ['dad',52.7,80.2],
+    ['bad',92.6,41.5], ['mad',92.7,54.5], ['salad',94.0,67.3], ['hand',93.7,80.2]
   ],
   5: [
-    ['table',53.6,41.5], ['tennis',54.7,54.5], ['teacher',57.2,67.3], ['tent',52.8,80.2],
-    ['cut',90.0,41.5], ['chat',90.6,54.5], ['great',91.5,67.3], ['last',90.0,80.2]
+    ['table',54.7,41.5], ['tennis',57.9,54.5], ['teacher',60.0,67.3], ['tent',53.6,80.2],
+    ['cut',89.7,41.5], ['chat',91.2,54.5], ['great',92.7,67.3], ['last',89.6,80.2]
   ]
 };
 
