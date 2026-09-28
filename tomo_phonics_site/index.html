@@ -21,18 +21,18 @@
     .slide{display:none;position:relative;margin:auto;aspect-ratio:16/9;max-width:1080px;background:#fff;box-shadow:var(--shadow);overflow:hidden;border-radius:14px}
     .slide.active{display:block}
     .slide img{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
-    .audio-btn{position:absolute;transform:translateY(-50%);width:36px;height:36px;border-radius:50%;border:2px solid rgba(255,255,255,.95);background:rgba(11,132,255,.94);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 7px 18px rgba(0,78,158,.24);transition:transform .12s ease,background .12s ease;z-index:5}
+    .audio-btn{position:absolute;transform:translateY(-50%);width:24px;height:24px;border-radius:50%;border:1.5px solid rgba(255,255,255,.96);background:rgba(11,132,255,.94);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 10px rgba(0,78,158,.18);transition:transform .12s ease,background .12s ease;z-index:5}
     .audio-btn:hover{transform:translateY(-50%) scale(1.05)}
     .audio-btn:active{transform:translateY(-50%) scale(.95)}
     .audio-btn.playing{background:#143e52}
-    .audio-btn svg{width:22px;height:22px;fill:currentColor}
+    .audio-btn svg{width:14px;height:14px;fill:currentColor}
     .audio-btn span{position:absolute;left:50%;top:calc(100% + 5px);transform:translateX(-50%);background:rgba(20,62,82,.92);color:white;padding:2px 6px;border-radius:5px;font-size:11px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .12s}
     .audio-btn:hover span,.audio-btn:focus-visible span{opacity:1}
     .controls{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:18px}
     .controls button{border:0;border-radius:999px;background:#fff;color:var(--ink);padding:10px 18px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(17,47,63,.09)}
     .counter{min-width:76px;text-align:center;font-weight:800}
     footer{text-align:center;font-size:12px;opacity:.58;padding:0 16px 36px}
-    @media (max-width:700px){.topbar{padding:10px 12px}.brand{font-size:14px}.brand small{font-size:10px}main{padding:12px 8px 36px}.slide{border-radius:8px}.audio-btn{width:32px;height:32px}.audio-btn svg{width:19px;height:19px}.hint{font-size:12px;margin-bottom:10px}.controls{margin-top:12px}}
+    @media (max-width:700px){.topbar{padding:10px 12px}.brand{font-size:14px}.brand small{font-size:10px}main{padding:12px 8px 36px}.slide{border-radius:8px}.audio-btn{width:22px;height:22px}.audio-btn svg{width:13px;height:13px}.hint{font-size:12px;margin-bottom:10px}.controls{margin-top:12px}}
   </style>
 </head>
 <body>
@@ -50,12 +50,12 @@ const pauseIcon = `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v1
 // x/y are percentages within the 16:9 slide.
 const hotspots = {
   3: [
-    ['dog',52.6,41.7], ['dentist',58.1,55.7], ['door',54.2,69.7], ['dad',52.3,83.7],
-    ['bad',90.3,41.7], ['mad',91.1,55.7], ['salad',92.7,69.7], ['hand',92.5,83.7]
+    ['dog',52.2,41.7], ['dentist',57.7,55.7], ['door',53.8,69.7], ['dad',51.9,83.7],
+    ['bad',89.9,41.7], ['mad',90.7,55.7], ['salad',92.3,69.7], ['hand',92.1,83.7]
   ],
   5: [
-    ['table',54.5,41.7], ['tennis',56.2,55.7], ['teacher',57.6,69.7], ['tent',52.6,83.7],
-    ['cut',89.2,41.7], ['chat',91.4,55.7], ['great',92.9,69.7], ['last',89.7,83.7]
+    ['table',54.1,41.7], ['tennis',55.8,55.7], ['teacher',57.2,69.7], ['tent',52.2,83.7],
+    ['cut',88.8,41.7], ['chat',91.0,55.7], ['great',92.5,69.7], ['last',89.3,83.7]
   ]
 };
 
