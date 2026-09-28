@@ -12,3 +12,4 @@ Static Vercel-ready site generated from the 6-page phonics PDF.
 ## Deploy
 This is a static site. Vercel can deploy the folder as-is.
 Updated root directory
+Redeploy after output directory update
