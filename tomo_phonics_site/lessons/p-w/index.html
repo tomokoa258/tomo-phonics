@@ -3,85 +3,42 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#eef5f8">
 <title>Study Mate｜フォニックス p & w</title>
 <style>
-:root{--bg:#eef6fa;--ink:#173f52;--blue:#2b8ed6;--cyan:#4bc3d2;--card:#fff;--line:#d8e7ef}
-*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Kaku Gothic ProN","Yu Gothic",sans-serif}
-header{position:sticky;top:0;z-index:20;background:rgba(238,246,250,.95);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
-.topbar{max-width:1220px;margin:auto;display:flex;align-items:center;justify-content:space-between;padding:12px 18px;gap:16px}
-.brand{display:flex;align-items:center;gap:12px}.brand img{width:180px;max-height:44px;object-fit:contain;mix-blend-mode:multiply}.brand small{font-weight:700;opacity:.65}
-.nav{display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end}.nav button{width:34px;height:34px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-weight:800;cursor:pointer;box-shadow:0 2px 8px rgba(20,63,82,.08)}.nav button.active{background:var(--ink);color:#fff}
-main{max-width:1220px;margin:24px auto;padding:0 18px}
-.viewer{background:#fff;border-radius:22px;box-shadow:0 16px 44px rgba(20,63,82,.10);overflow:hidden;aspect-ratio:16/9;position:relative}
-.slide{display:none;width:100%;height:100%;padding:6.5% 7% 5%;position:absolute;inset:0;background:#fff}.slide.active{display:block}
-.kicker{font-size:clamp(18px,2vw,30px);font-weight:800;color:var(--blue);margin-bottom:12px}.title{font-size:clamp(34px,5vw,72px);font-weight:900;line-height:1.05;margin:0 0 16px}.subtitle{font-size:clamp(18px,2.6vw,36px);font-weight:800;color:var(--blue)}
-.cover{display:grid;grid-template-columns:1fr .9fr;align-items:center;height:100%;gap:5%}.cover-art{font-size:clamp(70px,12vw,180px);text-align:center}
-.tip-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:28px}.tip{padding:22px;border-radius:18px;background:#f6fbfe;border:1px solid var(--line);font-size:clamp(18px,2vw,30px);font-weight:700}
-.sound{font-size:clamp(90px,14vw,200px);font-weight:900;line-height:.9;margin:10px 0;color:var(--ink)}
-.words{display:grid;grid-template-columns:1fr 1fr;gap:18px 30px;margin-top:22px}.wordrow{display:flex;align-items:center;justify-content:space-between;padding:10px 14px 10px 18px;border-radius:16px;background:#f8fbfd;border:1px solid var(--line)}.word{font-size:clamp(28px,3.4vw,52px);font-weight:850;letter-spacing:.01em}.word .focus{color:#ff3b30}
-.audio{flex:0 0 auto;width:34px;height:34px;border-radius:50%;border:1.5px solid #fff;background:#1687ff;color:#fff;display:grid;place-items:center;cursor:pointer;box-shadow:0 5px 13px rgba(22,135,255,.2);font-size:16px}
-.reading{display:grid;gap:22px;margin-top:38px}.sentence{font-size:clamp(26px,3.2vw,48px);line-height:1.35;font-weight:800;padding:20px 24px;border-radius:18px;background:#f8fbfd;border:1px solid var(--line)}
-.compare{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:28px}.comparebox{padding:26px;border-radius:20px;background:#f8fbfd;border:1px solid var(--line)}.comparebox h3{font-size:clamp(36px,5vw,72px);margin:0 0 12px}.comparebox p{font-size:clamp(18px,2vw,28px);font-weight:700;line-height:1.5}
-.controls{display:flex;justify-content:center;gap:16px;margin:18px 0 4px}.controls button{border:0;border-radius:999px;background:#fff;color:var(--ink);padding:11px 18px;font-weight:850;cursor:pointer;box-shadow:0 3px 10px rgba(20,63,82,.08)}
-.meta{text-align:center;font-size:13px;opacity:.65;margin-top:8px}
-footer{text-align:center;padding:30px 0 36px;opacity:.55;font-size:13px}
-@media(max-width:760px){.brand img{width:140px}.brand small{display:none}.topbar{padding:9px 10px}.nav button{width:30px;height:30px}.slide{padding:7% 6%}.words{gap:9px 12px}.wordrow{padding:7px 8px}.audio{width:28px;height:28px}.tip-grid,.compare{gap:12px}.tip{padding:12px}}
+*{box-sizing:border-box}
+html,body{margin:0;background:#eef5f8;color:#243f4c;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",sans-serif}
+header{position:sticky;top:0;z-index:20;background:rgba(238,245,248,.96);backdrop-filter:blur(10px);border-bottom:1px solid rgba(36,63,76,.08)}
+.topbar{max-width:1180px;margin:0 auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:14px}
+.brand{font-weight:900;font-size:20px}.brand small{font-size:12px;font-weight:700;opacity:.62;margin-left:10px}
+.back{border:0;border-radius:999px;background:#fff;color:#243f4c;padding:9px 14px;font-weight:800;text-decoration:none;box-shadow:0 3px 10px rgba(17,47,63,.09)}
+main{max-width:1180px;margin:0 auto;padding:22px 16px 48px}
+.note{text-align:center;font-size:13px;opacity:.72;margin:0 0 14px}
+.viewer{position:relative;width:100%;aspect-ratio:16/9;background:#fff;border-radius:14px;overflow:hidden;box-shadow:0 12px 32px rgba(17,47,63,.16)}
+.viewer iframe{position:absolute;inset:0;width:100%;height:100%;border:0;background:#fff}
+footer{text-align:center;font-size:12px;opacity:.58;padding:0 16px 30px}
+@media(max-width:700px){.topbar{padding:10px 12px}.brand{font-size:17px}.brand small{display:none}main{padding:12px 8px 36px}.viewer{border-radius:8px}}
 </style>
 </head>
 <body>
-<header><div class="topbar"><div class="brand"><img src="data:image/jpeg;base64,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" alt="Study Mate"><small>フォニックス｜p & w</small></div><div class="nav" id="nav"></div></div></header>
+<header>
+  <div class="topbar">
+    <div class="brand">Study Mate <small>フォニックス｜p & w</small></div>
+    <a class="back" href="/">D&amp;Tへ戻る</a>
+  </div>
+</header>
 <main>
-<div class="viewer" id="viewer">
-<section class="slide active">
-  <div class="cover">
-    <div><div class="kicker">フォニックス</div><h1 class="title">基本編</h1><div class="subtitle">子音のフォニックス（p & w）</div></div>
-    <div class="cover-art">p&nbsp;&nbsp;w</div>
+  <p class="note">Canvaの元デザインをそのまま表示しています。文字・イラスト・配置は変更していません。</p>
+  <div class="viewer">
+    <iframe
+      src="https://www.canva.com/design/DAGw5sZkqQ4/view?embed"
+      title="Phonics (基本)- p & w"
+      loading="eager"
+      allowfullscreen="allowfullscreen"
+      allow="fullscreen">
+    </iframe>
   </div>
-</section>
-<section class="slide">
-  <div class="kicker">子音のフォニックス : p & w</div><div class="sound">Pp</div><div class="subtitle">発音のコツ</div>
-  <div class="tip-grid"><div class="tip">くちびるをしっかりと閉じる</div><div class="tip">勢いよく息を吐く</div><div class="tip">スイカの種を飛ばすイメージ</div><div class="tip">のどは震えない・くちびるは丸めない</div></div>
-</section>
-<section class="slide">
-  <div class="kicker">子音のフォニックス : p & w</div><div class="subtitle">発音エクササイズ【 p 】</div>
-  <div class="words">
-    <div class="wordrow"><div class="word">pen</div><button class="audio" data-word="pen" aria-label="penの発音">🔊</button></div><div class="wordrow"><div class="word">panda</div><button class="audio" data-word="panda" aria-label="pandaの発音">🔊</button></div><div class="wordrow"><div class="word">pack</div><button class="audio" data-word="pack" aria-label="packの発音">🔊</button></div><div class="wordrow"><div class="word">apple</div><button class="audio" data-word="apple" aria-label="appleの発音">🔊</button></div><div class="wordrow"><div class="word">mop</div><button class="audio" data-word="mop" aria-label="mopの発音">🔊</button></div><div class="wordrow"><div class="word">open</div><button class="audio" data-word="open" aria-label="openの発音">🔊</button></div><div class="wordrow"><div class="word">laptop</div><button class="audio" data-word="laptop" aria-label="laptopの発音">🔊</button></div><div class="wordrow"><div class="word">pot</div><button class="audio" data-word="pot" aria-label="potの発音">🔊</button></div>
-  </div>
-</section>
-<section class="slide">
-  <div class="kicker">音読エクササイズ【 p 】</div>
-  <div class="reading"><div class="sentence">I pack my laptop in my bag for work.</div><div class="sentence">I wash the pot and mop the floor in the kitchen.</div></div>
-</section>
-<section class="slide">
-  <div class="kicker">子音のフォニックス : p & w</div><div class="sound">Ww</div><div class="subtitle">発音のコツ</div>
-  <div class="tip-grid"><div class="tip">くちびるを丸める</div><div class="tip">舌先は少し後ろに引く</div><div class="tip">口の周りはリラックスさせる</div><div class="tip">日本語の「ウ」にならないように気をつける</div></div>
-</section>
-<section class="slide">
-  <div class="kicker">子音のフォニックス : p & w</div><div class="subtitle">発音エクササイズ【 w 】</div>
-  <div class="words">
-    <div class="wordrow"><div class="word">wood</div><button class="audio" data-word="wood" aria-label="woodの発音">🔊</button></div><div class="wordrow"><div class="word">winter</div><button class="audio" data-word="winter" aria-label="winterの発音">🔊</button></div><div class="wordrow"><div class="word">wish</div><button class="audio" data-word="wish" aria-label="wishの発音">🔊</button></div><div class="wordrow"><div class="word">wagon</div><button class="audio" data-word="wagon" aria-label="wagonの発音">🔊</button></div><div class="wordrow"><div class="word">highway</div><button class="audio" data-word="highway" aria-label="highwayの発音">🔊</button></div><div class="wordrow"><div class="word">sandwich</div><button class="audio" data-word="sandwich" aria-label="sandwichの発音">🔊</button></div><div class="wordrow"><div class="word">power</div><button class="audio" data-word="power" aria-label="powerの発音">🔊</button></div><div class="wordrow"><div class="word">twin</div><button class="audio" data-word="twin" aria-label="twinの発音">🔊</button></div>
-  </div>
-</section>
-<section class="slide">
-  <div class="kicker">音読エクササイズ【 w 】</div>
-  <div class="reading"><div class="sentence">The twins ate sandwiches at the cafe.</div><div class="sentence">The wood in winter feels peaceful.</div></div>
-</section>
-<section class="slide">
-  <div class="kicker">子音のフォニックス : p & w</div><div class="subtitle">p / w を聞き分け・言い分けよう</div>
-  <div class="compare"><div class="comparebox"><h3>p</h3><p>くちびるを閉じて、息をパッと出す。<br>のどは震えません。</p></div><div class="comparebox"><h3>w</h3><p>くちびるを丸めて、なめらかに音を出す。<br>日本語の「ウ」になりすぎないように。</p></div></div>
-</section>
-</div>
-<div class="controls"><button id="prev">← 前へ</button><button id="next">次へ →</button></div>
-<div class="meta">Canva「Phonics (基本)- p & w」の内容を自動取得して作成した試作教材</div>
 </main>
 <footer>© Study Mate</footer>
-<script>
-const slides=[...document.querySelectorAll('.slide')],nav=document.getElementById('nav');let current=0;
-slides.forEach((_,i)=>{const b=document.createElement('button');b.textContent=i+1;b.onclick=()=>show(i);nav.appendChild(b)});
-function show(i){current=(i+slides.length)%slides.length;slides.forEach((s,j)=>s.classList.toggle('active',j===current));[...nav.children].forEach((b,j)=>b.classList.toggle('active',j===current))}
-document.getElementById('prev').onclick=()=>show(current-1);document.getElementById('next').onclick=()=>show(current+1);show(0);
-let speaking=null;
-document.querySelectorAll('.audio').forEach(btn=>btn.addEventListener('click',()=>{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(btn.dataset.word);u.lang='en-US';u.rate=.85;speechSynthesis.speak(u)}));
-document.querySelectorAll('.sentence').forEach(el=>{el.style.cursor='pointer';el.title='クリックで音声再生';el.addEventListener('click',()=>{speechSynthesis.cancel();const u=new SpeechSynthesisUtterance(el.textContent);u.lang='en-US';u.rate=.82;speechSynthesis.speak(u)})});
-</script>
-</body></html>
+</body>
+</html>
