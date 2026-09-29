@@ -37,18 +37,7 @@ jobs:
             n=$((i+1))
             echo "Downloading page $n..."
             curl -L --fail --retry 3 --retry-delay 2 "${urls[$i]}" -o "$out/page-$n.png"
-            python - "$out/page-$n.png" <<'PY'
-import struct, sys
-p=sys.argv[1]
-with open(p,'rb') as f:
-    sig=f.read(24)
-if sig[:8] != b'\x89PNG\r\n\x1a\n':
-    raise SystemExit(f"{p}: not a PNG")
-w,h=struct.unpack(">II",sig[16:24])
-print(f"{p}: {w}x{h}")
-if w < 1800 or h < 1000:
-    raise SystemExit(f"{p}: resolution too small ({w}x{h})")
-PY
+            python -c 'import struct,sys; p=sys.argv[1]; b=open(p,"rb").read(24); assert b[:8] == b"\\x89PNG\\r\\n\\x1a\\n", f"{p}: not PNG"; w,h=struct.unpack(">II",b[16:24]); print(f"{p}: {w}x{h}"); assert w >= 1800 and h >= 1000, f"{p}: resolution too small ({w}x{h})"' "$out/page-$n.png"
           done
 
       - name: Commit high-resolution pages
