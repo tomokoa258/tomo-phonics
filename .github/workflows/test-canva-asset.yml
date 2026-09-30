@@ -1,0 +1,25 @@
+name: Test Canva asset resolution
+
+on:
+  push:
+    paths:
+      - ".github/workflows/test-canva-asset.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download
+        shell: bash
+        run: |
+          set -euo pipefail
+          url='https://media.canva.com/v2/image-resize/format:JPG/height:1080/quality:100/uri:ifs%3A%2F%2FM%2F7a2c8080-a582-4a97-b8b5-e961a1db3292/watermark:F/width:1920?csig=AAAAAAAAAAAAAAAAAAAAANrp1BI8q3DBfXrEwMexTbcjzNRGu2IuynYsMQ4xKU_B&exp=1790767269&osig=AAAAAAAAAAAAAAAAAAAAAD2fJqwJIjFGS3gwr7nF3sRFArSqyyyhiEIm5ZHDD070&signer=media-rpc&x-canva-quality=thumbnail'
+          curl -L --fail "$url" -o /tmp/test.jpg
+          python - <<'PY'
+from PIL import Image
+im=Image.open('/tmp/test.jpg')
+print(im.size)
+PY
