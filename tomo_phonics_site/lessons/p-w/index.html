@@ -74,7 +74,7 @@ let current=1,editMode=false,drag=null,speakingButton=null;
 
 for(let p=1;p<=8;p++){
   const s=document.createElement('div');s.className='slide';s.dataset.page=p;
-  const img=document.createElement('img');img.src=`pages/page-${p}.png`;img.alt=`フォニックス p & w ページ ${p}`;s.appendChild(img);
+  const img=document.createElement('img');img.src=`pages/page-${p}.jpg`;img.alt=`フォニックス p & w ページ ${p}`;s.appendChild(img);
   (hotspots[p]||[]).forEach(([word,x,y])=>{
     const key=`${p}:${word}`,pos=saved[key]||{x,y};
     const b=document.createElement('button');b.className='audio-btn';b.dataset.word=word;b.dataset.page=p;b.style.left=pos.x+'%';b.style.top=pos.y+'%';b.innerHTML=playIcon+`<span>${word}</span>`;b.setAttribute('aria-label',word+' の発音を再生');
