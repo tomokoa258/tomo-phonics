@@ -61,9 +61,17 @@ const hotspots={
     ['pen',55.0,42.8],['panda',57.3,55.8],['pot',54.0,69.8],['pack',55.0,83.2],
     ['apple',91.0,42.8],['mop',90.0,55.8],['open',90.0,69.8],['laptop',93.0,83.2]
   ],
+  4:[
+    ['I pack my laptop in my bag for work.',91.0,47.0,'Sentence 1',0.88],
+    ['I wash the pot and mop the floor in the kitchen.',91.0,75.0,'Sentence 2',0.88]
+  ],
   6:[
     ['wood',55.7,42.7],['winter',57.5,55.8],['wish',55.5,69.8],['wagon',57.0,83.2],
     ['power',90.8,42.7],['sandwich',94.0,55.8],['highway',93.3,69.8],['twin',89.5,83.2]
+  ],
+  7:[
+    ['The twins ate sandwiches at the cafe.',91.0,47.0,'Sentence 1',0.88],
+    ['The wood in winter feels peaceful.',91.0,75.0,'Sentence 2',0.88]
   ]
 };
 const STORAGE_KEY='study-mate-pw-layout-v1';
@@ -71,13 +79,16 @@ let saved={};try{saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch
 const slidesEl=document.getElementById('slides'),nav=document.getElementById('nav'),counter=document.getElementById('counter');
 const editToggle=document.getElementById('editToggle'),saveBtn=document.getElementById('saveLayout'),resetBtn=document.getElementById('resetLayout'),copyBtn=document.getElementById('copyLayout'),toast=document.getElementById('toast');
 let current=1,editMode=false,drag=null,speakingButton=null;
+speechSynthesis.getVoices();
+if('onvoiceschanged' in speechSynthesis)speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();
 
 for(let p=1;p<=8;p++){
   const s=document.createElement('div');s.className='slide';s.dataset.page=p;
   const img=document.createElement('img');img.src=(p===1 ? 'pages/page-1.png' : `pages/page-${p}.jpg`);img.alt=`フォニックス p & w ページ ${p}`;s.appendChild(img);
-  (hotspots[p]||[]).forEach(([word,x,y])=>{
+  (hotspots[p]||[]).forEach(([word,x,y,label,rate])=>{
     const key=`${p}:${word}`,pos=saved[key]||{x,y};
-    const b=document.createElement('button');b.className='audio-btn';b.dataset.word=word;b.dataset.page=p;b.style.left=pos.x+'%';b.style.top=pos.y+'%';b.innerHTML=playIcon+`<span>${word}</span>`;b.setAttribute('aria-label',word+' の発音を再生');
+    const displayLabel=label||word;
+    const b=document.createElement('button');b.className='audio-btn';b.dataset.word=word;b.dataset.label=displayLabel;b.dataset.rate=rate||.82;b.dataset.page=p;b.style.left=pos.x+'%';b.style.top=pos.y+'%';b.innerHTML=playIcon+`<span>${displayLabel}</span>`;b.setAttribute('aria-label',displayLabel+' の音声を再生');
     b.addEventListener('click',e=>{if(editMode){e.preventDefault();return} speak(word,b)});
     b.addEventListener('pointerdown',e=>{if(!editMode)return;e.preventDefault();b.setPointerCapture?.(e.pointerId);drag={b,s,id:e.pointerId}});
     b.addEventListener('pointermove',e=>{if(!drag||drag.b!==b)return;const r=s.getBoundingClientRect();let xp=(e.clientX-r.left)/r.width*100,yp=(e.clientY-r.top)/r.height*100;xp=Math.max(1,Math.min(97,xp));yp=Math.max(2,Math.min(98,yp));b.style.left=xp.toFixed(2)+'%';b.style.top=yp.toFixed(2)+'%'});
@@ -87,11 +98,41 @@ for(let p=1;p<=8;p++){
   slidesEl.appendChild(s);
   const n=document.createElement('button');n.textContent=p;n.addEventListener('click',()=>show(p));nav.appendChild(n);
 }
+function chooseUSVoice(){
+  const voices=speechSynthesis.getVoices();
+  const us=voices.filter(v=>/^en-US$/i.test(v.lang)||/^en_US$/i.test(v.lang));
+  const preferred=[
+    /Samantha/i,/Ava/i,/Allison/i,/Susan/i,/Alex/i,
+    /Google US English/i,/Microsoft Aria/i,/Microsoft Jenny/i
+  ];
+  for(const re of preferred){
+    const v=us.find(v=>re.test(v.name));
+    if(v)return v;
+  }
+  return us[0]||voices.find(v=>/^en/i.test(v.lang))||null;
+}
 function speak(word,b){
   speechSynthesis.cancel();
-  document.querySelectorAll('.audio-btn.playing').forEach(x=>{x.classList.remove('playing');x.innerHTML=playIcon+`<span>${x.dataset.word}</span>`});
-  const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=.82;b.classList.add('playing');b.innerHTML=pauseIcon+`<span>${word}</span>`;speakingButton=b;
-  u.onend=u.onerror=()=>{b.classList.remove('playing');b.innerHTML=playIcon+`<span>${word}</span>`;speakingButton=null};speechSynthesis.speak(u);
+  document.querySelectorAll('.audio-btn.playing').forEach(x=>{
+    x.classList.remove('playing');
+    x.innerHTML=playIcon+`<span>${x.dataset.label||x.dataset.word}</span>`;
+  });
+  const u=new SpeechSynthesisUtterance(word);
+  u.lang='en-US';
+  u.rate=parseFloat(b.dataset.rate||'.82');
+  u.pitch=1;
+  const voice=chooseUSVoice();
+  if(voice)u.voice=voice;
+  const label=b.dataset.label||word;
+  b.classList.add('playing');
+  b.innerHTML=pauseIcon+`<span>${label}</span>`;
+  speakingButton=b;
+  u.onend=u.onerror=()=>{
+    b.classList.remove('playing');
+    b.innerHTML=playIcon+`<span>${label}</span>`;
+    speakingButton=null;
+  };
+  speechSynthesis.speak(u);
 }
 function show(p){current=Math.max(1,Math.min(8,p));document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===current-1));[...nav.children].forEach((b,i)=>b.classList.toggle('active',i===current-1));counter.textContent=current+' / 8';speechSynthesis.cancel()}
 function layout(){const d={};document.querySelectorAll('.audio-btn').forEach(b=>d[`${b.dataset.page}:${b.dataset.word}`]={x:parseFloat(b.style.left),y:parseFloat(b.style.top)});return d}
