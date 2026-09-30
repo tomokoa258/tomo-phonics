@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#eef5f8">
+<title>Study Mate Phonics｜教材一覧サンプル</title>
+<style>
+:root{
+  --bg:#eef5f8;--card:#fff;--ink:#243f4c;--muted:#68808d;--line:#dce8ee;
+  --blue:#8eb6cd;--blue2:#d9eaf2;--accent:#2f6f8f;--beige:#f5efe5;--shadow:0 10px 28px rgba(36,63,76,.08)
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",sans-serif}
+header{position:sticky;top:0;z-index:20;background:rgba(238,245,248,.95);backdrop-filter:blur(10px);border-bottom:1px solid rgba(36,63,76,.08)}
+.topbar{max-width:1180px;margin:auto;padding:16px 20px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.brand{display:flex;align-items:center;gap:12px}
+.mark{width:42px;height:42px;border-radius:14px;background:var(--card);display:grid;place-items:center;box-shadow:var(--shadow);font-size:21px}
+.brand-title{font-size:20px;font-weight:900;letter-spacing:.02em}
+.brand-sub{font-size:12px;color:var(--muted);margin-top:2px}
+main{max-width:1180px;margin:auto;padding:34px 20px 64px}
+.hero{background:linear-gradient(135deg,#fff 0%,#f7fbfd 58%,#e5f0f5 100%);border:1px solid var(--line);border-radius:26px;padding:34px;box-shadow:var(--shadow);display:grid;grid-template-columns:1.4fr .8fr;gap:20px;align-items:center}
+.eyebrow{font-weight:900;color:var(--accent);font-size:14px;letter-spacing:.08em}
+h1{font-size:clamp(32px,5vw,56px);line-height:1.05;margin:10px 0 14px}
+.hero p{margin:0;color:var(--muted);font-size:16px;line-height:1.8}
+.hero-visual{background:var(--beige);border-radius:22px;min-height:180px;display:grid;place-items:center;font-size:74px}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin:30px 0 18px}
+.tab{border:0;background:#fff;color:var(--ink);padding:12px 20px;border-radius:999px;font-weight:900;cursor:pointer;box-shadow:0 4px 14px rgba(36,63,76,.07)}
+.tab.active{background:var(--ink);color:#fff}
+.panel{display:none}.panel.active{display:block}
+.subtabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:22px}
+.subtab{border:1px solid var(--line);background:rgba(255,255,255,.72);color:var(--ink);padding:9px 15px;border-radius:999px;font-weight:800;cursor:pointer}
+.subtab.active{background:var(--blue2);border-color:#bfd8e4;color:#224f65}
+.subpanel{display:none}.subpanel.active{display:block}
+.section-title{display:flex;align-items:end;justify-content:space-between;gap:16px;margin:10px 0 16px}
+.section-title h2{font-size:24px;margin:0}
+.section-title p{margin:0;color:var(--muted);font-size:13px}
+.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px}
+.card{position:relative;background:var(--card);border:1px solid var(--line);border-radius:20px;padding:20px;text-decoration:none;color:inherit;min-height:145px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 6px 18px rgba(36,63,76,.05);transition:.18s ease}
+.card.available:hover{transform:translateY(-3px);box-shadow:0 12px 26px rgba(36,63,76,.10);border-color:#b8d5e3}
+.card.disabled{opacity:.62;cursor:default}
+.card-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.lesson{font-size:28px;font-weight:950;letter-spacing:.01em}
+.tag{font-size:11px;font-weight:900;padding:5px 8px;border-radius:999px;background:var(--beige);color:#665c4d;white-space:nowrap}
+.card p{margin:12px 0 0;color:var(--muted);font-size:13px;line-height:1.5}
+.status{font-size:12px;font-weight:900;margin-top:16px;color:var(--accent)}
+.status.soon{color:#8797a0}
+.group{margin:28px 0 10px}.group h3{margin:0 0 12px;font-size:18px;color:#365a6b}
+footer{text-align:center;padding:28px;color:var(--muted);font-size:12px}
+@media(max-width:850px){.hero{grid-template-columns:1fr}.hero-visual{display:none}.grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+@media(max-width:560px){main{padding:22px 12px 48px}.topbar{padding:12px}.hero{padding:24px 20px;border-radius:20px}.grid{grid-template-columns:1fr}.lesson{font-size:25px}}
+</style>
+</head>
+<body>
+<header>
+  <div class="topbar">
+    <div class="brand">
+      <div class="mark">🕊️</div>
+      <div><div class="brand-title">Study Mate Phonics</div><div class="brand-sub">発音を、見て・聞いて・まねして練習</div></div>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div>
+      <div class="eyebrow">STUDY MATE PHONICS</div>
+      <h1>今日の発音を<br>選んで練習しよう</h1>
+      <p>「基本」「応用」「お楽しみ・おまけ」の3つから選べます。<br>基本の中は、さらに <b>子音・母音・3 letter words</b> に分けています。</p>
+    </div>
+    <div class="hero-visual">A a</div>
+  </section>
+
+  <nav class="tabs" aria-label="教材カテゴリ">
+    <button class="tab active" data-tab="basic">① 基本</button>
+    <button class="tab" data-tab="advanced">② 応用</button>
+    <button class="tab" data-tab="fun">③ お楽しみ・おまけ</button>
+  </nav>
+
+  <section class="panel active" id="basic">
+    <div class="subtabs">
+      <button class="subtab active" data-sub="consonants">子音</button>
+      <button class="subtab" data-sub="vowels">母音</button>
+      <button class="subtab" data-sub="threeletters">3 letter words</button>
+    </div>
+
+    <div class="subpanel active" id="consonants">
+      <div class="section-title"><h2>子音のフォニックス</h2><p>1つの音・同じ音・間違えやすい音</p></div>
+      <div class="grid">
+        <a class="card available" href="/"><div><div class="card-top"><div class="lesson">t &amp; d</div><span class="tag">公開中</span></div><p>子音の基本。単語の発音を聞いて練習できます。</p></div><div class="status">▶ 教材を開く</div></a>
+        <a class="card available" href="/lessons/p-w/"><div><div class="card-top"><div class="lesson">p &amp; w</div><span class="tag">公開中</span></div><p>単語スピーカー付き。位置調整済み。</p></div><div class="status">▶ 教材を開く</div></a>
+        <div class="card disabled"><div><div class="card-top"><div class="lesson">g &amp; q (qu)</div><span class="tag">その他</span></div><p>子音の基本教材</p></div><div class="status soon">準備中</div></div>
+        <div class="card disabled"><div><div class="card-top"><div class="lesson">x</div><span class="tag">その他</span></div><p>子音の基本教材</p></div><div class="status soon">準備中</div></div>
+        <div class="card disabled"><div><div class="card-top"><div class="lesson">y &amp; z</div><span class="tag">その他</span></div><p>子音の基本教材</p></div><div class="status soon">準備中</div></div>
+        <div class="card disabled"><div><div class="card-top"><div class="lesson">c &amp; k</div><span class="tag">同じ発音</span></div><p>聞き分け・発音の確認</p></div><div class="status soon">準備中</div></div>
+        <div class="card disabled"><div><div class="card-top"><div class="lesson">s &amp; soft c</div><span class="tag">同じ発音</span></div><p>同じ音になる綴りを練習</p></div><div class="status soon">準備中</div></div>
+        <div class="card disabled"><div><div class="card-top"><div class="lesson">j &amp; soft g</div><span class="tag">同じ発音</span></div><p>同じ音になる綴りを練習</p></div><div class="status soon">準備中</div></div>
+        <div class="card disabled"><div><div class="card-top"><div class="lesson">b &amp; v</div><span class="tag">間違えやすい</span></div><p>聞き分け・言い分け練習</p></div><div class="status soon">準備中</div></div>
+        <div class="card disabled"><div><div class="card-top"><div class="lesson">f &amp; h</div><span class="tag">間違えやすい</span></div><p>聞き分け・言い分け練習</p></div><div class="status soon">準備中</div></div>
+        <div class="card disabled"><div><div class="card-top"><div class="lesson">l &amp; r</div><span class="tag">間違えやすい</span></div><p>聞き分け・言い分け練習</p></div><div class="status soon">準備中</div></div>
+        <div class="card disabled"><div><div class="card-top"><div class="lesson">m &amp; n</div><span class="tag">間違えやすい</span></div><p>聞き分け・言い分け練習</p></div><div class="status soon">準備中</div></div>
+      </div>
+    </div>
+
+    <div class="subpanel" id="vowels">
+      <div class="section-title"><h2>母音のフォニックス</h2><p>長母音・短母音からスタート</p></div>
+      <div class="grid">
+        <div class="card disabled"><div><div class="card-top"><div class="lesson">a</div><span class="tag">長母音＆短母音</span></div><p>母音の基本音を練習</p></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">e</div><span class="tag">長母音＆短母音</span></div><p>母音の基本音を練習</p></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">i</div><span class="tag">長母音＆短母音</span></div><p>母音の基本音を練習</p></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">o</div><span class="tag">長母音＆短母音</span></div><p>母音の基本音を練習</p></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">u</div><span class="tag">長母音＆短母音</span></div><p>母音の基本音を練習</p></div><div class="status soon">準備中</div></div>
+      </div>
+    </div>
+
+    <div class="subpanel" id="threeletters">
+      <div class="section-title"><h2>3 letter words</h2><p>子音と母音の復習</p></div>
+      <div class="grid">
+        <div class="card disabled"><div><div class="card-top"><div class="lesson">3 letter words</div><span class="tag">復習</span></div><p>子音と母音を組み合わせて、短い単語を読む練習。</p></div><div class="status soon">準備中</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel" id="advanced">
+    <div class="section-title"><h2>応用</h2><p>音の組み合わせを広げていきます</p></div>
+    <div class="group"><h3>2つの子音連結</h3><div class="grid">
+      <div class="card disabled"><div><div class="card-top"><div class="lesson">bl & br</div><span class="tag">子音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">cl & cr</div><span class="tag">子音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">fl & fr</div><span class="tag">子音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">gl & gr</div><span class="tag">子音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">pl & pr</div><span class="tag">子音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">sl & st</div><span class="tag">子音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">sm & sn</div><span class="tag">子音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">sp & sw</div><span class="tag">子音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">squ & tw</div><span class="tag">子音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">dr & tr</div><span class="tag">子音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">sc & sk</div><span class="tag">子音連結</span></div></div><div class="status soon">準備中</div></div>
+    </div></div>
+    <div class="group"><h3>新しい音になる子音</h3><div class="grid">
+      <div class="card disabled"><div><div class="card-top"><div class="lesson">th</div><span class="tag">応用</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">ch</div><span class="tag">応用</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">sh & wh</div><span class="tag">応用</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">ck & ng</div><span class="tag">応用</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">gh & ph</div><span class="tag">応用</span></div></div><div class="status soon">準備中</div></div>
+    </div></div>
+    <div class="group"><h3>母音の組み合わせ</h3><div class="grid">
+      <div class="card disabled"><div><div class="card-top"><div class="lesson">ai & ay</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">oi & oy</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">au & aw</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">oa & oe</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">ee & ey</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">ea</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">oo</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">ie</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">ei</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">ow</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">ue & ui</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">ew</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div><div class="card disabled"><div><div class="card-top"><div class="lesson">ou</div><span class="tag">母音連結</span></div></div><div class="status soon">準備中</div></div>
+    </div></div>
+  </section>
+
+  <section class="panel" id="fun">
+    <div class="section-title"><h2>お楽しみ・おまけ</h2><p>発音を使って楽しむコンテンツ</p></div>
+    <div class="grid">
+      <div class="card disabled"><div><div class="card-top"><div class="lesson">洋楽でライミング</div><span class="tag">3曲</span></div><p>韻を感じながら英語の音を楽しむ。</p></div><div class="status soon">準備中</div></div>
+      <div class="card disabled"><div><div class="card-top"><div class="lesson">早口言葉</div><span class="tag">5つ</span></div><p>口を動かして発音チャレンジ。</p></div><div class="status soon">準備中</div></div>
+    </div>
+  </section>
+</main>
+
+<footer>© Study Mate</footer>
+
+<script>
+const tabs=[...document.querySelectorAll('.tab')];
+const panels=[...document.querySelectorAll('.panel')];
+tabs.forEach(btn=>btn.addEventListener('click',()=>{
+  tabs.forEach(x=>x.classList.toggle('active',x===btn));
+  panels.forEach(p=>p.classList.toggle('active',p.id===btn.dataset.tab));
+}));
+const subtabs=[...document.querySelectorAll('.subtab')];
+const subpanels=[...document.querySelectorAll('.subpanel')];
+subtabs.forEach(btn=>btn.addEventListener('click',()=>{
+  subtabs.forEach(x=>x.classList.toggle('active',x===btn));
+  subpanels.forEach(p=>p.classList.toggle('active',p.id===btn.dataset.sub));
+}));
+</script>
+</body>
+</html>
