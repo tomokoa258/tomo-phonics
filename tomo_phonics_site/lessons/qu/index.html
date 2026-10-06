@@ -58,11 +58,11 @@ const playIcon=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 
 const pauseIcon=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>`;
 const hotspots={
   3:[
-    ['quick',53.0,41.8],['quiet',53.8,55.5],['quality',55.5,68.9],['queen',54.5,82.5],
-    ['request',92.0,41.8],['square',92.0,55.5],['liquid',91.5,68.9],['aquarium',95.0,82.5]
+    ['quick',55.01,41.74],['quiet',54.54,55.81],['quality',57.34,69.12],['queen',56.38,82.46],
+    ['request',95.05,42.68],['square',93.58,55.97],['liquid',92.04,70.12],['aquarium',95.77,78.65]
   ]
 };
-const STORAGE_KEY='study-mate-qu-layout-v1';
+const STORAGE_KEY='study-mate-qu-layout-v2';
 let saved={};try{saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(_){}
 const slidesEl=document.getElementById('slides'),nav=document.getElementById('nav'),counter=document.getElementById('counter');
 const editToggle=document.getElementById('editToggle'),saveBtn=document.getElementById('saveLayout'),resetBtn=document.getElementById('resetLayout'),copyBtn=document.getElementById('copyLayout'),toast=document.getElementById('toast');
