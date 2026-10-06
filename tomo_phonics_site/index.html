@@ -160,6 +160,7 @@ function playWord(word,button){
 }
 
 function showToast(message){
+  if(!toastEl) return;
   toastEl.textContent=message;
   toastEl.classList.add('show');
   clearTimeout(showToast._t);
@@ -195,27 +196,35 @@ function setEditMode(on){
   if(on) stopAudio();
 }
 
-editToggle.addEventListener('click',()=>setEditMode(!editMode));
-saveLayoutBtn.addEventListener('click',()=>{
-  savedLayout=collectLayout();
-  localStorage.setItem(STORAGE_KEY,JSON.stringify(savedLayout));
-  showToast('このブラウザに位置を保存しました');
-});
-resetLayoutBtn.addEventListener('click',()=>{
-  applyDefaultLayout();
-  localStorage.removeItem(STORAGE_KEY);
-  savedLayout={};
-  showToast('初期位置に戻しました');
-});
-copyLayoutBtn.addEventListener('click',async()=>{
-  const text=JSON.stringify(collectLayout(),null,2);
-  try{
-    await navigator.clipboard.writeText(text);
-    showToast('配置データをコピーしました');
-  }catch(_){
-    showToast('コピーできませんでした');
-  }
-});
+if(editToggle){
+  editToggle.addEventListener('click',()=>setEditMode(!editMode));
+}
+if(saveLayoutBtn){
+  saveLayoutBtn.addEventListener('click',()=>{
+    savedLayout=collectLayout();
+    localStorage.setItem(STORAGE_KEY,JSON.stringify(savedLayout));
+    showToast('このブラウザに位置を保存しました');
+  });
+}
+if(resetLayoutBtn){
+  resetLayoutBtn.addEventListener('click',()=>{
+    applyDefaultLayout();
+    localStorage.removeItem(STORAGE_KEY);
+    savedLayout={};
+    showToast('初期位置に戻しました');
+  });
+}
+if(copyLayoutBtn){
+  copyLayoutBtn.addEventListener('click',async()=>{
+    const text=JSON.stringify(collectLayout(),null,2);
+    try{
+      await navigator.clipboard.writeText(text);
+      showToast('配置データをコピーしました');
+    }catch(_){
+      showToast('コピーできませんでした');
+    }
+  });
+}
 
 function showPage(p){
   stopAudio(); current=Math.min(6,Math.max(1,p));
