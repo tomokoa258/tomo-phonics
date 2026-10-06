@@ -72,7 +72,7 @@ if('onvoiceschanged' in speechSynthesis)speechSynthesis.onvoiceschanged=()=>spee
 
 for(let p=1;p<=4;p++){
   const s=document.createElement('div');s.className='slide';s.dataset.page=p;
-  const img=document.createElement('img');img.src=`pages/page-${p}.png`;img.alt=`フォニックス qu ページ ${p}`;s.appendChild(img);
+  const img=document.createElement('img');img.src=`pages/page-${p}.jpg`;img.alt=`フォニックス qu ページ ${p}`;s.appendChild(img);
   (hotspots[p]||[]).forEach(([word,x,y,label,rate])=>{
     const key=`${p}:${word}`,pos=saved[key]||{x,y};
     const displayLabel=label||word;
