@@ -41,17 +41,9 @@
 <header><div class="topbar"><div class="brand">Study Mate <small>フォニックス｜x</small></div><div class="nav" id="nav"></div></div></header>
 <main>
   <p class="hint">Canvaから書き出した完成スライドをそのまま表示しています。3ページの青い 🔊 ボタンで単語の発音を確認できます。</p>
-  <div class="editbar">
-    <button id="editToggle" class="primary">位置を編集</button>
-    <button id="saveLayout" disabled>位置を保存</button>
-    <button id="resetLayout" disabled>初期位置に戻す</button>
-    <button id="copyLayout" disabled>配置データをコピー</button>
-  </div>
-  <p class="edit-note">編集モード：青い再生ボタンをドラッグして位置を調整できます。</p>
-  <section id="slides"></section>
+<section id="slides"></section>
   <div class="controls"><button id="prev">← 前へ</button><div class="counter" id="counter"></div><button id="next">次へ →</button></div>
 </main>
-<div class="toast" id="toast"></div>
 <footer>© Study Mate</footer>
 <script>
 const playIcon=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 16.5 12zm0-8.5v2.06A8 8 0 0 1 20 12a8 8 0 0 1-3.5 6.44v2.06A10 10 0 0 0 22 12a10 10 0 0 0-5.5-8.5z"/></svg>`;
@@ -125,10 +117,10 @@ function speak(word,b){
 function show(p){current=Math.max(1,Math.min(4,p));document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===current-1));[...nav.children].forEach((b,i)=>b.classList.toggle('active',i===current-1));counter.textContent=current+' / 4';speechSynthesis.cancel()}
 function layout(){const d={};document.querySelectorAll('.audio-btn').forEach(b=>d[`${b.dataset.page}:${b.dataset.word}`]={x:parseFloat(b.style.left),y:parseFloat(b.style.top)});return d}
 function toastMsg(m){toast.textContent=m;toast.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('show'),1400)}
-editToggle.onclick=()=>{editMode=!editMode;document.body.classList.toggle('edit-mode',editMode);editToggle.textContent=editMode?'編集を終了':'位置を編集';saveBtn.disabled=resetBtn.disabled=copyBtn.disabled=!editMode;speechSynthesis.cancel()};
-saveBtn.onclick=()=>{localStorage.setItem(STORAGE_KEY,JSON.stringify(layout()));toastMsg('位置を保存しました')};
-resetBtn.onclick=()=>{localStorage.removeItem(STORAGE_KEY);location.reload()};
-copyBtn.onclick=async()=>{const t=JSON.stringify(layout(),null,2);try{await navigator.clipboard.writeText(t);toastMsg('配置データをコピーしました')}catch(_){prompt('配置データ',t)}};
+if(editToggle) editToggle.onclick=()=>{editMode=!editMode;document.body.classList.toggle('edit-mode',editMode);editToggle.textContent=editMode?'編集を終了':'位置を編集';saveBtn.disabled=resetBtn.disabled=copyBtn.disabled=!editMode;speechSynthesis.cancel()};
+if(saveBtn) saveBtn.onclick=()=>{localStorage.setItem(STORAGE_KEY,JSON.stringify(layout()));toastMsg('位置を保存しました')};
+if(resetBtn) resetBtn.onclick=()=>{localStorage.removeItem(STORAGE_KEY);location.reload()};
+if(copyBtn) copyBtn.onclick=async()=>{const t=JSON.stringify(layout(),null,2);try{await navigator.clipboard.writeText(t);toastMsg('配置データをコピーしました')}catch(_){prompt('配置データ',t)}};
 document.getElementById('prev').onclick=()=>show(current-1);document.getElementById('next').onclick=()=>show(current+1);document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(current-1);if(e.key==='ArrowRight')show(current+1)});show(1);
 </script>
 </body></html>
