@@ -1,0 +1,47 @@
+name: Import QU slides
+
+on:
+  push:
+    paths:
+      - ".github/workflows/import-qu-slides.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Download QU slides
+        shell: bash
+        run: |
+          set -euo pipefail
+          out="tomo_phonics_site/lessons/qu/pages"
+          mkdir -p "$out"
+          urls=(
+            'https://media.canva.com/v2/image-resize/format:JPG/height:1080/quality:100/uri:ifs%3A%2F%2FM%2F552d66cc-28a4-43f5-8055-a385ba2e3972/watermark:F/width:1920?csig=AAAAAAAAAAAAAAAAAAAAACFzdhWOZD11XoZM7_XqCIPDS8mdy3joaO7vA7pK58ZM&exp=1791273966&osig=AAAAAAAAAAAAAAAAAAAAANuqgm6u0CMPQv6Bd8GC15wOSufwTYKKU5aEmsS0f2n9&signer=media-rpc&token=AAIAAU0AJDU1MmQ2NmNjLTI4YTQtNDNmNS04MDU1LWEzODViYTJlMzk3MgAAAAABoRA_mbD2Z6-4QIfDznM2pACe2qsZTLieul3skj3zVlq7Mqqo4g&x-canva-quality=thumbnail'
+            'https://media.canva.com/v2/image-resize/format:JPG/height:1080/quality:100/uri:ifs%3A%2F%2FM%2Fb7ae3927-6555-40f7-9df4-7081072f58f2/watermark:F/width:1920?csig=AAAAAAAAAAAAAAAAAAAAAJFPyo8lA2mOFMqPd7zSO691k-QVNwlLYWH8MRqKKcRx&exp=1791273741&osig=AAAAAAAAAAAAAAAAAAAAAMJzRYu2PaqTdAxkb6YTtyqQO6DAeb8EAcypRDJNF1GY&signer=media-rpc&token=AAIAAU0AJGI3YWUzOTI3LTY1NTUtNDBmNy05ZGY0LTcwODEwNzJmNThmMgAAAAABoRA8KshhfGFB-8f6tK7BCAiZxXJxTldgOlLBC9eCSwwIhChLTw&x-canva-quality=thumbnail'
+            'https://media.canva.com/v2/image-resize/format:JPG/height:1080/quality:100/uri:ifs%3A%2F%2FM%2F0eec3a3b-0a0c-4d7d-84e7-1da5a2c8da06/watermark:F/width:1920?csig=AAAAAAAAAAAAAAAAAAAAAGNVIQdGHDqtk3Vmbo026GWvti7sfNUT8RkQaJLZLv5n&exp=1791274394&osig=AAAAAAAAAAAAAAAAAAAAAKOf5DDjYrc2oaV6UCFBULyYQRNPWKxC-DfghaMHoomD&signer=media-rpc&token=AAIAAU0AJDBlZWMzYTNiLTBhMGMtNGQ3ZC04NGU3LTFkYTVhMmM4ZGEwNgAAAAABoRBGIZDxQAheK61rqMAQifan5MBbGSbVg_s7WUxbyyxWcAvusA&x-canva-quality=thumbnail'
+            'https://media.canva.com/v2/image-resize/format:JPG/height:1080/quality:100/uri:ifs%3A%2F%2FM%2Fdfd591cb-bc6a-4340-8658-657def4b5539/watermark:F/width:1920?csig=AAAAAAAAAAAAAAAAAAAAANjcy7xMHzu5cgtrcfl3ofmx4X6a3GOjPwlzgD-_NN6e&exp=1791276386&osig=AAAAAAAAAAAAAAAAAAAAAAPd8k6bVf545C9GR6gPDdL-XRbF_ADACNpB73CtrwTy&signer=media-rpc&token=AAIAAU0AJGRmZDU5MWNiLWJjNmEtNDM0MC04NjU4LTY1N2RlZjRiNTUzOQAAAAABoRBkhtCBPMXroIy43aMfyKuYx9hjwjYFapa8Ac1W4Mkki9xD1A&x-canva-quality=thumbnail'
+          )
+          for i in "${!urls[@]}"; do
+            n=$((i+1))
+            curl -L --fail --retry 3 "${urls[$i]}" -o "$out/page-$n.jpg"
+            python -c 'from PIL import Image; import sys; im=Image.open(sys.argv[1]); print(sys.argv[1], im.size); assert im.width>=1800 and im.height>=1000' "$out/page-$n.jpg"
+          done
+
+      - name: Commit slides
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "Study Mate Import Bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add tomo_phonics_site/lessons/qu/pages
+          git commit -m "Import original QU slide images" || exit 0
+          git pull --rebase origin main
+          git push origin main
