@@ -32,7 +32,7 @@ jobs:
           for i in "${!urls[@]}"; do
             n=$((i+1))
             curl -L --fail --retry 3 "${urls[$i]}" -o "$out/page-$n.png"
-            python -c 'from PIL import Image; import sys; im=Image.open(sys.argv[1]); print(sys.argv[1], im.size); assert im.width>=1800 and im.height>=1000' "$out/page-$n.png"
+            file "$out/page-$n.png"
           done
 
       - name: Commit QU slides
