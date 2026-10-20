@@ -6,70 +6,70 @@
 <meta name="theme-color" content="#8eb6cd">
 <title>Study Mate｜フォニックス y & z</title>
 <style>
-:root{--blue:#8eb6cd;--ink:#263f4b;--accent:#0b84ff;--white:#fff;--red:#ef2b2d;--shadow:0 12px 32px rgba(17,47,63,.16)}
+:root{--bg:#eef5f8;--ink:#243f4c;--accent:#0b84ff;--shadow:0 12px 32px rgba(17,47,63,.16)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:#eef5f8;color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",sans-serif}
 header{position:sticky;top:0;z-index:20;background:rgba(238,245,248,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(36,63,76,.08)}
 .topbar{max-width:1180px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
 .brand{font-weight:900;font-size:20px}.brand small{font-size:12px;font-weight:700;opacity:.65;margin-left:8px}
-.nav{display:flex;gap:6px;overflow:auto}.nav button{border:0;background:#fff;color:var(--ink);width:34px;height:34px;border-radius:999px;font-weight:800;cursor:pointer;box-shadow:0 2px 8px rgba(17,47,63,.08)}.nav button.active{background:var(--ink);color:#fff}
-main{max-width:1180px;margin:auto;padding:22px 16px 52px}.hint{text-align:center;font-size:14px;opacity:.78;margin:0 0 18px}
-.slide{display:none;position:relative;margin:auto;aspect-ratio:16/9;max-width:1080px;background:var(--blue);box-shadow:var(--shadow);overflow:hidden;border-radius:14px}.slide.active{display:block}
-.inner{position:absolute;inset:3%;background:#fff}
-.slide-title{position:absolute;top:1.5%;left:0;right:0;text-align:center;font-size:clamp(24px,4.1vw,54px);font-weight:950;letter-spacing:.01em}
-.cover .inner{display:flex;align-items:center}.cover-copy{padding-left:4.5%;width:66%}.cover h1{font-size:clamp(44px,7vw,96px);color:#087de7;margin:0 0 4%;line-height:1}.cover h2{font-size:clamp(26px,3.5vw,52px);color:#087de7;margin:0}.slashes{margin-top:3%;color:#1485d0;font-size:clamp(20px,2.8vw,40px);line-height:1.25;letter-spacing:.06em}.teacher{position:absolute;right:5%;bottom:7%;font-size:clamp(80px,13vw,190px)}.logo{position:absolute;left:2.5%;bottom:2.5%;font-size:clamp(20px,2.7vw,38px);font-weight:900;color:#2d80cf}
-.tip .inner,.review .inner{top:12%;height:85%}.letter-block{position:absolute;left:2%;top:6%;width:26%;height:86%;border-right:3px solid var(--ink)}.letters{font-size:clamp(80px,12vw,180px);font-weight:900;line-height:.8;padding:5% 7%}.mouth{position:absolute;left:2%;bottom:2%;width:88%;height:50%;border:8px solid var(--ink);background:#fff}.mouth svg{width:100%;height:100%}
-.tips{position:absolute;left:34%;top:7%;right:5%}.tips h3{font-size:clamp(28px,4vw,58px);margin:0 0 3%;display:inline-block;border-bottom:2px solid}.tips p{font-size:clamp(19px,2.5vw,38px);font-weight:700;margin:1.6% 0}.ok:before{content:"✓";display:inline-grid;place-items:center;width:1.15em;height:1.15em;border:3px solid;border-radius:50%;margin-right:.35em}.ng:before{content:"×";color:var(--red);font-size:1.35em;margin-right:.35em}
-.sound-row{position:absolute;left:39%;right:10%;bottom:6%;display:flex;justify-content:space-between}.sound-circle{width:12%;aspect-ratio:1;background:var(--blue);border-radius:50%;display:grid;place-items:center;font-size:clamp(36px,5vw,72px)}
-.exercise .inner{top:12%;height:85%}.flag{position:absolute;left:2%;top:0;width:18%;height:47%;background:var(--ink);color:white;font-size:clamp(72px,9vw,145px);font-weight:900;display:grid;place-items:center}.flag:after{content:"";position:absolute;bottom:-18%;left:0;border-left:9.5vw solid transparent;border-right:9.5vw solid transparent;border-top:6vw solid var(--ink)}
-.exercise h3{position:absolute;left:24%;top:4%;font-size:clamp(30px,4vw,60px);margin:0}.word-grid{position:absolute;left:24%;right:4%;top:20%;bottom:6%;display:grid;grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);column-gap:7%;row-gap:1%}.word-item{display:flex;align-items:center;gap:2.2%;font-size:clamp(24px,3.1vw,46px);font-weight:600;white-space:nowrap}.drill{display:flex;gap:1.2%;margin-right:1%}.drill span{width:1.45em;height:1.45em;background:var(--blue);border-radius:50%;display:grid;place-items:center}.pic{font-size:1.1em}.hot{color:var(--red)}
-.audio-btn{margin-left:.18em;width:30px;height:30px;border-radius:50%;border:2px solid #fff;background:var(--accent);color:white;display:inline-flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 3px 9px rgba(0,78,158,.25);flex:0 0 auto}.audio-btn.playing{background:#143e52}.audio-btn svg{width:17px;height:17px;fill:currentColor}
-.review h3{position:absolute;left:6%;top:7%;font-family:cursive;font-size:clamp(42px,6vw,88px);font-style:italic;margin:0;transform:rotate(-4deg)}.review-col{position:absolute;top:34%;width:34%;text-align:center}.review-col.left{left:11%}.review-col.right{right:10%}.review-sounds{display:flex;justify-content:center;gap:6%;margin-bottom:8%}.review-sounds span{width:2em;height:2em;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-size:clamp(28px,4vw,60px)}.review-mouth{height:230px;max-height:28vw;border:8px solid var(--ink);background:white}.review-mouth svg{width:100%;height:100%}
-.controls{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:18px}.controls button{border:0;border-radius:999px;background:#fff;color:var(--ink);padding:10px 18px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(17,47,63,.09)}.counter{min-width:76px;text-align:center;font-weight:800}footer{text-align:center;font-size:12px;opacity:.58;padding:0 16px 36px}
-@media(max-width:700px){.topbar{padding:10px 12px}.brand{font-size:17px}.brand small{display:none}main{padding:12px 8px 36px}.slide{border-radius:8px}.hint{font-size:12px}.audio-btn{width:22px;height:22px}.audio-btn svg{width:13px;height:13px}.word-grid{column-gap:3%}}
+.nav{display:flex;gap:6px;overflow:auto;padding-bottom:1px}.nav button{border:0;background:#fff;color:var(--ink);width:34px;height:34px;border-radius:999px;font-weight:800;cursor:pointer;box-shadow:0 2px 8px rgba(17,47,63,.08)}.nav button.active{background:var(--ink);color:#fff}
+main{max-width:1180px;margin:auto;padding:22px 16px 52px}.hint{margin:0 auto 18px;text-align:center;font-size:14px;line-height:1.7;opacity:.78}
+.slide{display:none;position:relative;margin:auto;aspect-ratio:16/9;max-width:1080px;background:#fff;box-shadow:var(--shadow);overflow:hidden;border-radius:14px}.slide.active{display:block}
+.slide>img{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.audio-btn{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,.98);background:rgba(11,132,255,.96);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 10px rgba(0,78,158,.25);z-index:5}
+.audio-btn.playing{background:#143e52}.audio-btn svg{width:16px;height:16px;fill:currentColor}
+.audio-btn span{position:absolute;left:50%;top:calc(100% + 5px);transform:translateX(-50%);background:rgba(20,62,82,.94);color:#fff;padding:2px 6px;border-radius:5px;font-size:11px;white-space:nowrap;opacity:0;pointer-events:none}.audio-btn:hover span,.audio-btn:focus-visible span{opacity:1}
+.controls{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:18px}.controls button{border:0;border-radius:999px;background:#fff;color:var(--ink);padding:10px 18px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(17,47,63,.09)}.controls button:disabled{opacity:.4;cursor:default}.counter{min-width:76px;text-align:center;font-weight:800}
+footer{text-align:center;font-size:12px;opacity:.58;padding:0 16px 36px}
+@media(max-width:700px){.topbar{padding:10px 12px}.brand{font-size:17px}.brand small{display:none}main{padding:12px 8px 36px}.slide{border-radius:8px}.audio-btn{width:23px;height:23px}.audio-btn svg{width:13px;height:13px}.hint{font-size:12px;margin-bottom:10px}}
 </style>
 </head>
 <body>
 <header><div class="topbar"><div class="brand">Study Mate <small>フォニックス｜y & z</small></div><div class="nav" id="nav"></div></div></header>
 <main>
-<p class="hint">y と z の発音のコツを確認したあと、青い 🔊 ボタンで単語の発音を聞いて練習できます。</p>
-<section id="slides">
-<div class="slide cover active"><div class="inner"><div class="cover-copy"><h1>フォニックス</h1><h2>基本編：子音のフォニックス（y & z）</h2><div class="slashes">／／／／／／／／／／<br>／／／／／／／／／／<br>／／／／／／／／／／<br>／／／／／／／／／／</div></div><div class="teacher">👩🏻‍🏫</div><div class="logo">🐦 Study Mate</div></div></div>
-<div class="slide tip"><div class="slide-title">子音のフォニックス：y & z</div><div class="inner"><div class="letter-block"><div class="letters">Y<span style="font-size:.7em">y</span></div><div class="mouth"><svg viewBox="0 0 300 220"><path d="M55 35 Q25 75 40 108 Q50 122 75 116 Q96 105 110 125 Q140 150 205 139 Q240 132 265 146" fill="none" stroke="#111" stroke-width="5"/><path d="M70 118 Q94 129 118 128 Q150 127 186 151 Q226 177 260 190" fill="none" stroke="#111" stroke-width="5"/><path d="M100 126 Q128 91 184 96 Q223 102 262 126" fill="none" stroke="#111" stroke-width="5"/></svg></div></div><div class="tips"><h3>発音のコツ</h3><p class="ok">舌先を少し持ち上げる</p><p class="ok">舌は奥歯の側面に触れる</p><p class="ok">口の奥の方で発音するイメージ</p><p class="ok">語頭は i の発音になる場合がある</p><p class="ng">口は大きく開けない</p></div><div class="sound-row"><div class="sound-circle">y</div><div class="sound-circle">y</div><div class="sound-circle">y</div></div></div></div>
-<div class="slide exercise"><div class="slide-title">子音のフォニックス：y & z</div><div class="inner"><div class="flag">Y<span style="font-size:.65em">y</span></div><h3>発音エクササイズ</h3><div class="word-grid">
-<div class="word-item"><div class="drill"><span>y</span><span>y</span></div><span class="pic">☀️</span><span><b class="hot">y</b>ellow</span><button class="audio-btn" data-word="yellow" aria-label="yellow の発音"></button></div>
-<div class="word-item"><div class="drill"><span>y</span><span>y</span></div><span class="pic">🚀</span><span>be<b class="hot">y</b>ond</span><button class="audio-btn" data-word="beyond"></button></div>
-<div class="word-item"><div class="drill"><span>y</span><span>y</span></div><span class="pic">📅</span><span><b class="hot">y</b>ear</span><button class="audio-btn" data-word="year"></button></div>
-<div class="word-item"><div class="drill"><span>y</span><span>y</span></div><span class="pic">🛶</span><span>ka<b class="hot">y</b>ak</span><button class="audio-btn" data-word="kayak"></button></div>
-<div class="word-item"><div class="drill"><span>y</span><span>y</span></div><span class="pic">💴</span><span><b class="hot">y</b>en</span><button class="audio-btn" data-word="yen"></button></div>
-<div class="word-item"><div class="drill"><span>y</span><span>y</span></div><span class="pic">⚖️</span><span>law<b class="hot">y</b>er</span><button class="audio-btn" data-word="lawyer"></button></div>
-<div class="word-item"><div class="drill"><span>y</span><span>y</span></div><span class="pic">✅</span><span><b class="hot">y</b>es</span><button class="audio-btn" data-word="yes"></button></div>
-<div class="word-item"><div class="drill"><span>y</span><span>y</span></div><span class="pic">🗽</span><span>New <b class="hot">Y</b>ork</span><button class="audio-btn" data-word="New York"></button></div>
-</div></div></div>
-<div class="slide tip"><div class="slide-title">子音のフォニックス：y & z</div><div class="inner"><div class="letter-block"><div class="letters">Z<span style="font-size:.7em">z</span></div><div class="mouth"><svg viewBox="0 0 300 220"><path d="M55 35 Q25 75 40 108 Q50 122 75 116 Q96 105 110 125 Q140 150 205 139 Q240 132 265 146" fill="none" stroke="#111" stroke-width="5"/><path d="M70 118 Q94 129 118 128 Q150 127 186 151 Q226 177 260 190" fill="none" stroke="#111" stroke-width="5"/><path d="M100 126 Q128 91 184 96 Q223 102 262 126" fill="none" stroke="#111" stroke-width="5"/></svg></div></div><div class="tips"><h3>発音のコツ</h3><p class="ok">歯のすき間から音を出す</p><p class="ok">のどを震わせる</p><p class="ok">舌先は前歯の近く</p><p class="ng">カタカナの「ズ」の発音にしない</p><p class="ng">くちびるを丸めない</p></div><div class="sound-row"><div class="sound-circle">z</div><div class="sound-circle">z</div><div class="sound-circle">z</div></div></div></div>
-<div class="slide exercise"><div class="slide-title">子音のフォニックス：y & z</div><div class="inner"><div class="flag">Z<span style="font-size:.65em">z</span></div><h3>発音エクササイズ</h3><div class="word-grid">
-<div class="word-item"><div class="drill"><span>z</span><span>z</span></div><span class="pic">🦁</span><span><b class="hot">z</b>oo</span><button class="audio-btn" data-word="zoo"></button></div>
-<div class="word-item"><div class="drill"><span>z</span><span>z</span></div><span class="pic">🛋️</span><span>la<b class="hot">z</b>y</span><button class="audio-btn" data-word="lazy"></button></div>
-<div class="word-item"><div class="drill"><span>z</span><span>z</span></div><span class="pic">🤐</span><span><b class="hot">z</b>ip</span><button class="audio-btn" data-word="zip"></button></div>
-<div class="word-item"><div class="drill"><span>z</span><span>z</span></div><span class="pic">📏</span><span>si<b class="hot">z</b>e</span><button class="audio-btn" data-word="size"></button></div>
-<div class="word-item"><div class="drill"><span>z</span><span>z</span></div><span class="pic">0️⃣</span><span><b class="hot">z</b>ero</span><button class="audio-btn" data-word="zero"></button></div>
-<div class="word-item"><div class="drill"><span>z</span><span>z</span></div><span class="pic">💡</span><span>qui<b class="hot">z</b></span><button class="audio-btn" data-word="quiz"></button></div>
-<div class="word-item"><div class="drill"><span>z</span><span>z</span></div><span class="pic">🦓</span><span><b class="hot">z</b>ebra</span><button class="audio-btn" data-word="zebra"></button></div>
-<div class="word-item"><div class="drill"><span>z</span><span>z</span></div><span class="pic">🤩</span><span>ama<b class="hot">z</b>ing</span><button class="audio-btn" data-word="amazing"></button></div>
-</div></div></div>
-<div class="slide review"><div class="slide-title">子音のフォニックス：y & z</div><div class="inner"><h3>Review</h3><div class="review-col left"><div class="review-sounds"><span>y</span><span>y</span><span>y</span></div><div class="review-mouth"><svg viewBox="0 0 300 220"><path d="M55 35 Q25 75 40 108 Q50 122 75 116 Q96 105 110 125 Q140 150 205 139 Q240 132 265 146" fill="none" stroke="#111" stroke-width="5"/><path d="M70 118 Q94 129 118 128 Q150 127 186 151 Q226 177 260 190" fill="none" stroke="#111" stroke-width="5"/><path d="M100 126 Q128 91 184 96 Q223 102 262 126" fill="none" stroke="#111" stroke-width="5"/></svg></div></div><div class="review-col right"><div class="review-sounds"><span>z</span><span>z</span><span>z</span></div><div class="review-mouth"><svg viewBox="0 0 300 220"><path d="M55 35 Q25 75 40 108 Q50 122 75 116 Q96 105 110 125 Q140 150 205 139 Q240 132 265 146" fill="none" stroke="#111" stroke-width="5"/><path d="M70 118 Q94 129 118 128 Q150 127 186 151 Q226 177 260 190" fill="none" stroke="#111" stroke-width="5"/><path d="M100 126 Q128 91 184 96 Q223 102 262 126" fill="none" stroke="#111" stroke-width="5"/></svg></div></div></div></div>
-</section>
+<p class="hint">スライドは元画像をそのまま表示しています。3・5ページの青い 🔊 ボタンで単語の発音を確認できます。</p>
+<section id="slides"></section>
 <div class="controls"><button id="prev">← 前へ</button><div class="counter" id="counter"></div><button id="next">次へ →</button></div>
-</main><footer>© Study Mate</footer>
+</main>
+<footer>© Study Mate</footer>
 <script>
-const playIcon='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 16.5 12zm0-8.5v2.06A8 8 0 0 1 20 12a8 8 0 0 1-3.5 6.44v2.06A10 10 0 0 0 22 12a10 10 0 0 0-5.5-8.5z"/></svg>';
-const pauseIcon='<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>';
-const slides=[...document.querySelectorAll('.slide')],nav=document.getElementById('nav'),counter=document.getElementById('counter');let current=1;
-for(let i=1;i<=slides.length;i++){const b=document.createElement('button');b.textContent=i;b.onclick=()=>show(i);nav.appendChild(b)}
-function chooseVoice(){const vs=speechSynthesis.getVoices();const us=vs.filter(v=>/^en-US$/i.test(v.lang)||/^en_US$/i.test(v.lang));for(const re of [/Samantha/i,/Ava/i,/Allison/i,/Alex/i,/Google US English/i,/Microsoft Aria/i,/Microsoft Jenny/i]){const v=us.find(x=>re.test(x.name));if(v)return v}return us[0]||vs.find(v=>/^en/i.test(v.lang))||null}
-speechSynthesis.getVoices();if('onvoiceschanged'in speechSynthesis)speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();
-document.querySelectorAll('.audio-btn').forEach(b=>{b.innerHTML=playIcon;b.onclick=()=>{speechSynthesis.cancel();document.querySelectorAll('.audio-btn.playing').forEach(x=>{x.classList.remove('playing');x.innerHTML=playIcon});const u=new SpeechSynthesisUtterance(b.dataset.word);u.lang='en-US';u.rate=.82;u.pitch=1;const v=chooseVoice();if(v)u.voice=v;b.classList.add('playing');b.innerHTML=pauseIcon;u.onend=u.onerror=()=>{b.classList.remove('playing');b.innerHTML=playIcon};speechSynthesis.speak(u)}})
-function show(p){current=Math.max(1,Math.min(slides.length,p));slides.forEach((s,i)=>s.classList.toggle('active',i===current-1));[...nav.children].forEach((b,i)=>b.classList.toggle('active',i===current-1));counter.textContent=current+' / '+slides.length;speechSynthesis.cancel()}
+const playIcon=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 16.5 12zm0-8.5v2.06A8 8 0 0 1 20 12a8 8 0 0 1-3.5 6.44v2.06A10 10 0 0 0 22 12a10 10 0 0 0-5.5-8.5z"/></svg>`;
+const pauseIcon=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>`;
+const hotspots={
+3:[
+['yellow',57.4,39.4],['year',54.8,52.9],['yen',52.4,66.0],['yes',51.9,79.2],
+['beyond',95.1,39.4],['kayak',91.4,52.9],['lawyer',93.1,66.0],['New York',94.1,79.2]
+],
+5:[
+['zoo',53.2,39.4],['zip',51.1,52.9],['zero',54.2,66.0],['zebra',57.2,79.2],
+['lazy',90.9,39.4],['size',91.3,52.9],['quiz',92.3,66.0],['amazing',95.0,79.2]
+]
+};
+const slidesEl=document.getElementById('slides'),nav=document.getElementById('nav'),counter=document.getElementById('counter');
+let current=1;
+speechSynthesis.getVoices();
+if('onvoiceschanged' in speechSynthesis)speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();
+function chooseUSVoice(){
+ const voices=speechSynthesis.getVoices(),us=voices.filter(v=>/^en-US$/i.test(v.lang)||/^en_US$/i.test(v.lang));
+ for(const re of [/Samantha/i,/Ava/i,/Allison/i,/Susan/i,/Alex/i,/Google US English/i,/Microsoft Aria/i,/Microsoft Jenny/i]){const v=us.find(v=>re.test(v.name));if(v)return v}
+ return us[0]||voices.find(v=>/^en/i.test(v.lang))||null;
+}
+function speak(word,b){
+ speechSynthesis.cancel();
+ document.querySelectorAll('.audio-btn.playing').forEach(x=>{x.classList.remove('playing');x.innerHTML=playIcon+`<span>${x.dataset.word}</span>`;});
+ const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=.82;u.pitch=1;const v=chooseUSVoice();if(v)u.voice=v;
+ b.classList.add('playing');b.innerHTML=pauseIcon+`<span>${word}</span>`;
+ u.onend=u.onerror=()=>{b.classList.remove('playing');b.innerHTML=playIcon+`<span>${word}</span>`;};
+ speechSynthesis.speak(u);
+}
+for(let p=1;p<=6;p++){
+ const s=document.createElement('div');s.className='slide';s.dataset.page=p;
+ const img=document.createElement('img');img.src=`pages/page-${p}.jpg`;img.alt=`フォニックス y & z ページ ${p}`;s.appendChild(img);
+ (hotspots[p]||[]).forEach(([word,x,y])=>{const b=document.createElement('button');b.className='audio-btn';b.dataset.word=word;b.style.left=x+'%';b.style.top=y+'%';b.innerHTML=playIcon+`<span>${word}</span>`;b.setAttribute('aria-label',word+' の発音を再生');b.onclick=()=>speak(word,b);s.appendChild(b);});
+ slidesEl.appendChild(s);
+ const n=document.createElement('button');n.textContent=p;n.onclick=()=>show(p);nav.appendChild(n);
+}
+function show(p){current=Math.max(1,Math.min(6,p));document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===current-1));[...nav.children].forEach((b,i)=>b.classList.toggle('active',i===current-1));counter.textContent=current+' / 6';document.getElementById('prev').disabled=current===1;document.getElementById('next').disabled=current===6;speechSynthesis.cancel()}
 document.getElementById('prev').onclick=()=>show(current-1);document.getElementById('next').onclick=()=>show(current+1);document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(current-1);if(e.key==='ArrowRight')show(current+1)});show(1);
 </script>
 </body></html>
