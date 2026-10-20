@@ -1,65 +1,105 @@
 <!doctype html>
 <html lang="ja">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="theme-color" content="#8eb6cd">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#8eb6cd">
 <title>Study Mate｜フォニックス c & k</title>
 <style>
-:root{--bg:#eef5f8;--ink:#243f4c;--blue:#8eb6cd;--accent:#0b84ff;--red:#ff2d2d;--shadow:0 12px 32px rgba(17,47,63,.16)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",sans-serif}
+:root{--bg:#eef5f8;--ink:#243f4c;--accent:#0b84ff;--shadow:0 12px 32px rgba(17,47,63,.16)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",sans-serif}
 header{position:sticky;top:0;z-index:20;background:rgba(238,245,248,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(36,63,76,.08)}
-.topbar{max-width:1180px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}.brand{font-weight:900;font-size:20px}.brand small{font-size:12px;font-weight:700;opacity:.65;margin-left:8px}
-.nav{display:flex;gap:6px}.nav button{border:0;background:#fff;color:var(--ink);width:34px;height:34px;border-radius:999px;font-weight:800;cursor:pointer}.nav button.active{background:var(--ink);color:#fff}
-main{max-width:1180px;margin:auto;padding:22px 16px 52px}.hint{text-align:center;font-size:14px;opacity:.78;margin:0 0 18px}.slide{display:none;position:relative;margin:auto;aspect-ratio:16/9;max-width:1080px;background:#fff;box-shadow:var(--shadow);overflow:hidden;border-radius:14px;border:18px solid var(--blue)}.slide.active{display:block}
-.canvas{position:absolute;inset:0;background:#fff}.top-title{position:absolute;left:0;right:0;top:-2px;height:90px;background:var(--blue);display:flex;align-items:center;justify-content:center;font-size:54px;font-weight:900;letter-spacing:.5px}
-.cover h1{position:absolute;left:45px;top:120px;font-size:64px;margin:0;color:#0b7fe9}.cover h2{position:absolute;left:70px;top:220px;font-size:35px;color:#0b7fe9;margin:0}.slash{position:absolute;left:50px;top:315px;width:220px;height:150px;background:repeating-linear-gradient(135deg,transparent 0 16px,#168ee5 17px 19px,transparent 20px 33px);opacity:.85}.teacher{position:absolute;right:70px;bottom:50px;font-size:180px}
-.letter{position:absolute;left:55px;top:115px;font-size:150px;font-weight:800}.divider{position:absolute;left:305px;top:70px;width:3px;height:430px;background:var(--ink)}.mouth{position:absolute;left:38px;bottom:35px;width:230px;height:230px;border:10px solid var(--ink);display:flex;align-items:center;justify-content:center}.mouth svg{width:88%;height:88%}
-.tips{position:absolute;left:370px;top:95px;right:40px}.tips h3{font-size:42px;margin:0 0 25px;border-bottom:2px solid var(--ink);display:inline-block;padding-bottom:6px}.tips p{font-size:27px;margin:18px 0;font-weight:700}.ok::before{content:"☑";margin-right:12px}.ng::before{content:"✕";color:var(--red);margin-right:18px}
-.bubbles{position:absolute;left:410px;bottom:35px;right:110px;display:flex;justify-content:space-between}.bubble{width:82px;height:82px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-size:40px;font-weight:800}
-.ribbon{position:absolute;left:20px;top:0;width:185px;height:240px;background:var(--ink);clip-path:polygon(0 0,100% 0,100% 100%,50% 78%,0 100%);color:#fff;font-size:105px;font-weight:500;display:flex;align-items:flex-start;justify-content:center;padding-top:40px}
-.exercise h3{position:absolute;left:245px;top:85px;font-size:43px;margin:0}.words{position:absolute;left:255px;top:180px;right:55px;display:grid;grid-template-columns:1fr 1fr;gap:28px 115px}.word{position:relative;font-size:39px;display:flex;align-items:center;gap:12px}.two{display:flex;gap:10px}.mini{width:52px;height:52px;border-radius:50%;background:var(--blue);display:grid;place-items:center;font-size:30px;font-weight:800}.word .txt{font-weight:650}.word .txt .focus{color:red}
-.review-title{position:absolute;left:58px;top:95px;font-size:58px;font-weight:900;font-style:italic;transform:rotate(-4deg)}.review-cols{position:absolute;top:175px;left:155px;right:155px;display:grid;grid-template-columns:1fr 1fr;gap:150px;text-align:center}.review-box .triple{display:flex;gap:22px;justify-content:center;margin-bottom:35px}.review-mouth{width:220px;height:220px;border:9px solid var(--ink);margin:auto;display:flex;align-items:center;justify-content:center}.review-mouth svg{width:88%;height:88%}
-.audio-btn{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid #fff;background:rgba(11,132,255,.96);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 10px rgba(0,78,158,.25);z-index:10}.audio-btn.playing{background:#143e52}.audio-btn svg{width:16px;height:16px;fill:currentColor}.audio-btn span{position:absolute;left:50%;top:calc(100% + 5px);transform:translateX(-50%);background:#143e52;color:#fff;padding:2px 6px;border-radius:5px;font-size:11px;white-space:nowrap;opacity:0;pointer-events:none}.audio-btn:hover span{opacity:1}
-.editbar{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 auto 14px}.editbar button,.controls button{border:0;border-radius:999px;background:#fff;color:var(--ink);padding:9px 15px;font-weight:800;cursor:pointer;box-shadow:0 3px 10px rgba(17,47,63,.09)}.editbar button.primary{background:var(--ink);color:#fff}.editbar button:disabled,.controls button:disabled{opacity:.45}.edit-note{text-align:center;font-size:12px;opacity:.7;margin:-4px 0 14px;display:none}body.edit-mode .edit-note{display:block}body.edit-mode .audio-btn{outline:2px dashed rgba(11,132,255,.45);outline-offset:4px;cursor:grab;touch-action:none}
-.controls{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:18px}.counter{min-width:76px;text-align:center;font-weight:800}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#143e52;color:#fff;padding:10px 14px;border-radius:999px;font-size:13px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}.toast.show{opacity:1}
-@media(max-width:700px){.slide{border-width:7px}.top-title{height:46px;font-size:24px}.cover h1{font-size:34px;top:65px;left:22px}.cover h2{font-size:18px;top:120px;left:35px}.slash{top:175px;left:25px;width:120px;height:80px}.teacher{font-size:90px;right:25px;bottom:25px}.letter{font-size:75px;top:60px;left:25px}.divider{left:150px;top:40px;height:220px}.mouth{left:18px;bottom:18px;width:115px;height:115px;border-width:5px}.tips{left:180px;top:55px}.tips h3{font-size:22px;margin-bottom:10px}.tips p{font-size:13px;margin:9px 0}.bubbles{left:195px;right:40px}.bubble{width:40px;height:40px;font-size:20px}.ribbon{width:95px;height:125px;font-size:50px;padding-top:20px}.exercise h3{left:125px;top:47px;font-size:23px}.words{left:132px;top:100px;right:25px;gap:12px 25px}.word{font-size:20px;gap:5px}.mini{width:25px;height:25px;font-size:14px}.review-title{font-size:30px;left:30px;top:52px}.review-cols{top:95px;left:75px;right:75px;gap:75px}.review-mouth{width:110px;height:110px;border-width:5px}.audio-btn{width:22px;height:22px}}
-</style></head>
+.topbar{max-width:1180px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:900;font-size:20px}.brand small{font-size:12px;font-weight:700;opacity:.65;margin-left:8px}
+.nav{display:flex;gap:6px;overflow:auto;padding-bottom:1px}.nav button{border:0;background:#fff;color:var(--ink);width:34px;height:34px;border-radius:999px;font-weight:800;cursor:pointer;box-shadow:0 2px 8px rgba(17,47,63,.08)}.nav button.active{background:var(--ink);color:#fff}
+main{max-width:1180px;margin:auto;padding:22px 16px 52px}.hint{margin:0 auto 18px;text-align:center;font-size:14px;line-height:1.7;opacity:.78}
+.slide{display:none;position:relative;margin:auto;aspect-ratio:16/9;max-width:1080px;background:#fff;box-shadow:var(--shadow);overflow:hidden;border-radius:14px}.slide.active{display:block}
+.slide>img{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.audio-btn{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,.98);background:rgba(11,132,255,.96);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 10px rgba(0,78,158,.25);z-index:5}
+.audio-btn.playing{background:#143e52}.audio-btn svg{width:16px;height:16px;fill:currentColor}
+.audio-btn span{position:absolute;left:50%;top:calc(100% + 5px);transform:translateX(-50%);background:rgba(20,62,82,.94);color:#fff;padding:2px 6px;border-radius:5px;font-size:11px;white-space:nowrap;opacity:0;pointer-events:none}.audio-btn:hover span,.audio-btn:focus-visible span{opacity:1}
+.editbar{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 auto 14px}.editbar button{border:0;border-radius:999px;background:#fff;color:var(--ink);padding:8px 14px;font-weight:800;cursor:pointer;box-shadow:0 3px 10px rgba(17,47,63,.09)}.editbar button.primary{background:var(--ink);color:#fff}.editbar button:disabled{opacity:.45;cursor:not-allowed}.edit-note{text-align:center;font-size:12px;opacity:.7;margin:-4px 0 14px;display:none}body.edit-mode .edit-note{display:block}body.edit-mode .audio-btn{outline:2px dashed rgba(11,132,255,.45);outline-offset:4px;cursor:grab;touch-action:none}.controls{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:18px}.controls button{border:0;border-radius:999px;background:#fff;color:var(--ink);padding:10px 18px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(17,47,63,.09)}.controls button:disabled{opacity:.4;cursor:default}.counter{min-width:76px;text-align:center;font-weight:800}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#143e52;color:#fff;padding:10px 14px;border-radius:999px;font-size:13px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}.toast.show{opacity:1}
+footer{text-align:center;font-size:12px;opacity:.58;padding:0 16px 36px}
+@media(max-width:700px){.topbar{padding:10px 12px}.brand{font-size:17px}.brand small{display:none}main{padding:12px 8px 36px}.slide{border-radius:8px}.audio-btn{width:23px;height:23px}.audio-btn svg{width:13px;height:13px}.hint{font-size:12px;margin-bottom:10px}}
+</style>
+</head>
 <body>
 <header><div class="topbar"><div class="brand">Study Mate <small>フォニックス｜c & k</small></div><div class="nav" id="nav"></div></div></header>
 <main>
-<p class="hint">3・5ページの青い 🔊 ボタンで単語の発音を確認できます。</p>
-<div class="editbar"><button id="editToggle" class="primary">位置を編集</button><button id="saveLayout" disabled>位置を保存</button><button id="resetLayout" disabled>初期位置に戻す</button><button id="copyLayout" disabled>配置データをコピー</button></div>
+<p class="hint">スライドは元画像をそのまま表示しています。3・5ページの青い 🔊 ボタンで単語の発音を確認できます。</p>
+<div class="editbar">
+  <button id="editToggle" class="primary">位置を編集</button>
+  <button id="saveLayout" disabled>位置を保存</button>
+  <button id="resetLayout" disabled>初期位置に戻す</button>
+  <button id="copyLayout" disabled>配置データをコピー</button>
+</div>
 <div class="edit-note">編集モード中：青いスピーカーボタンをドラッグして移動できます。</div>
 <section id="slides"></section>
 <div class="controls"><button id="prev">← 前へ</button><div class="counter" id="counter"></div><button id="next">次へ →</button></div>
-</main><div class="toast" id="toast"></div>
+</main>
+<div class="toast" id="toast"></div>
+<footer>© Study Mate</footer>
 <script>
-const mouthSVG='<svg viewBox="0 0 240 220" aria-hidden="true"><path d="M40 35c25 18 40 55 22 75-14 16-10 33 10 40 15 5 28 0 39-8 10-7 22-3 29 8 10 16 26 18 46 7 12-7 24-10 38-7" fill="none" stroke="#243f4c" stroke-width="5"/><path d="M74 136c11 2 21 8 30 17 13 13 35 16 56 5 16-8 33-7 47-1" fill="none" stroke="#243f4c" stroke-width="5"/></svg>';
-const slides=[
-'<div class="canvas cover"><h1>フォニックス</h1><h2>基本編：子音のフォニックス（c & k）</h2><div class="slash"></div><div class="teacher">👩🏻‍🏫</div></div>',
-'<div class="canvas"><div class="top-title">子音のフォニックス：c & k</div><div class="letter">Cc</div><div class="divider"></div><div class="mouth">'+mouthSVG+'</div><div class="tips"><h3>発音のコツ</h3><p class="ok">舌は口の奥の上あごにあてる</p><p class="ok">舌を離すタイミングで勢いよく息を出す</p><p class="ok">息は短く強く出す</p><p class="ng">口は閉じない</p><p class="ng">のどは震わせない</p></div><div class="bubbles"><div class="bubble">c</div><div class="bubble">c</div><div class="bubble">c</div></div></div>',
-'<div class="canvas exercise"><div class="top-title">子音のフォニックス：c & k</div><div class="ribbon">Cc</div><h3>発音エクササイズ</h3><div class="words">'+
-[['🐈','cat','c'],['📖','comic','c'],['🍳','cook','c'],['🚗','traffic','c'],['🥫','can','c'],['🤔','because','c'],['☕','coffee','c'],['🥈','second','c']].map(([e,w,f])=>'<div class="word"><div class="two"><div class="mini">c</div><div class="mini">c</div></div><span>'+e+'</span><span class="txt">'+w.replace(f,'<span class="focus">'+f+'</span>')+'</span></div>').join('')+
-'</div></div>',
-'<div class="canvas"><div class="top-title">子音のフォニックス：c & k</div><div class="letter">Kk</div><div class="divider"></div><div class="mouth">'+mouthSVG+'</div><div class="tips"><h3>発音のコツ</h3><p class="ok">c と同じ発音</p><p class="ok">舌は口の奥側の上あごにあてる</p><p class="ok">勢いよく息を出しながら発音する</p><p class="ng">口は閉じない</p><p class="ng">のどは震えない</p></div><div class="bubbles"><div class="bubble">k</div><div class="bubble">k</div><div class="bubble">k</div></div></div>',
-'<div class="canvas exercise"><div class="top-title">子音のフォニックス：c & k</div><div class="ribbon">Kk</div><h3>発音エクササイズ</h3><div class="words">'+
-[['🤴','king','k'],['🎨','pink','k'],['🔑','key','k'],['🍞','bake','k'],['🫶','kind','k'],['🏞️','park','k'],['🐨','koala','k'],['⚠️','risk','k']].map(([e,w,f])=>'<div class="word"><div class="two"><div class="mini">k</div><div class="mini">k</div></div><span>'+e+'</span><span class="txt">'+w.replace(f,'<span class="focus">'+f+'</span>')+'</span></div>').join('')+
-'</div></div>',
-'<div class="canvas"><div class="top-title">子音のフォニックス：c & k</div><div class="review-title">Review</div><div class="review-cols"><div class="review-box"><div class="triple"><div class="bubble">c</div><div class="bubble">c</div><div class="bubble">c</div></div><div class="review-mouth">'+mouthSVG+'</div></div><div class="review-box"><div class="triple"><div class="bubble">k</div><div class="bubble">k</div><div class="bubble">k</div></div><div class="review-mouth">'+mouthSVG+'</div></div></div></div>'
-];
-const hotspots={3:[['cat',46,39],['comic',82,39],['cook',46,52],['traffic',82,52],['can',46,65],['because',82,65],['coffee',46,78],['second',82,78]],5:[['king',46,39],['pink',82,39],['key',46,52],['bake',82,52],['kind',46,65],['park',82,65],['koala',46,78],['risk',82,78]]};
-const playIcon='<svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 16.5 12z"/></svg>';
-const pauseIcon='<svg viewBox="0 0 24 24"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>';
-const slidesEl=document.getElementById('slides'),nav=document.getElementById('nav'),counter=document.getElementById('counter'),editToggle=document.getElementById('editToggle'),saveBtn=document.getElementById('saveLayout'),resetBtn=document.getElementById('resetLayout'),copyBtn=document.getElementById('copyLayout'),toast=document.getElementById('toast');
-const STORAGE_KEY='study-mate-ck-layout-v1';let saved={};try{saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(_){}
+const playIcon=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 16.5 12zm0-8.5v2.06A8 8 0 0 1 20 12a8 8 0 0 1-3.5 6.44v2.06A10 10 0 0 0 22 12a10 10 0 0 0-5.5-8.5z"/></svg>`;
+const pauseIcon=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>`;
+const hotspots={
+3:[
+['cat',52.0,42.0],['cook',54.0,55.4],['can',52.0,68.7],['coffee',57.0,82.0],
+['comic',95.0,42.0],['traffic',96.0,55.4],['because',97.0,68.7],['second',95.0,82.0]
+],
+5:[
+['king',56.0,42.0],['key',54.0,55.4],['kind',55.0,68.7],['koala',57.0,82.0],
+['pink',92.0,42.0],['bake',92.0,55.4],['park',91.0,68.7],['risk',90.0,82.0]
+]
+};
+const slidesEl=document.getElementById('slides'),nav=document.getElementById('nav'),counter=document.getElementById('counter');
+const editToggle=document.getElementById('editToggle'),saveBtn=document.getElementById('saveLayout'),resetBtn=document.getElementById('resetLayout'),copyBtn=document.getElementById('copyLayout'),toast=document.getElementById('toast');
+const STORAGE_KEY='study-mate-ck-layout-v1';
+let saved={};try{saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(_){}
 let current=1,editMode=false,drag=null;
-function chooseUSVoice(){const v=speechSynthesis.getVoices();return v.find(x=>/^en-US$/i.test(x.lang))||v.find(x=>/^en/i.test(x.lang))||null}
-function speak(word,b){speechSynthesis.cancel();document.querySelectorAll('.audio-btn.playing').forEach(x=>{x.classList.remove('playing');x.innerHTML=playIcon+'<span>'+x.dataset.word+'</span>'});const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=.82;const v=chooseUSVoice();if(v)u.voice=v;b.classList.add('playing');b.innerHTML=pauseIcon+'<span>'+word+'</span>';u.onend=u.onerror=()=>{b.classList.remove('playing');b.innerHTML=playIcon+'<span>'+word+'</span>'};speechSynthesis.speak(u)}
-for(let p=1;p<=6;p++){const s=document.createElement('div');s.className='slide';s.dataset.page=p;s.innerHTML=slides[p-1];(hotspots[p]||[]).forEach(([word,x,y])=>{const pos=saved[p+':'+word]||{x,y};const b=document.createElement('button');b.className='audio-btn';b.dataset.word=word;b.dataset.page=p;b.style.left=pos.x+'%';b.style.top=pos.y+'%';b.innerHTML=playIcon+'<span>'+word+'</span>';b.onclick=e=>{if(editMode){e.preventDefault();return}speak(word,b)};b.addEventListener('pointerdown',e=>{if(!editMode)return;e.preventDefault();b.setPointerCapture?.(e.pointerId);drag={b,s}});b.addEventListener('pointermove',e=>{if(!editMode||!drag||drag.b!==b)return;const r=s.getBoundingClientRect();let xp=(e.clientX-r.left)/r.width*100,yp=(e.clientY-r.top)/r.height*100;xp=Math.max(1,Math.min(99,xp));yp=Math.max(2,Math.min(98,yp));b.style.left=xp.toFixed(2)+'%';b.style.top=yp.toFixed(2)+'%'});b.addEventListener('pointerup',()=>drag=null);s.appendChild(b)});slidesEl.appendChild(s);const n=document.createElement('button');n.textContent=p;n.onclick=()=>show(p);nav.appendChild(n)}
-function collect(){const d={};document.querySelectorAll('.audio-btn').forEach(b=>d[b.dataset.page+':'+b.dataset.word]={x:parseFloat(b.style.left),y:parseFloat(b.style.top)});return d}
-function defaults(){document.querySelectorAll('.audio-btn').forEach(b=>{const p=Number(b.dataset.page),i=(hotspots[p]||[]).find(x=>x[0]===b.dataset.word);if(i){b.style.left=i[1]+'%';b.style.top=i[2]+'%'}})}
-function msg(m){toast.textContent=m;toast.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('show'),1400)}
-function edit(on){editMode=on;document.body.classList.toggle('edit-mode',on);editToggle.textContent=on?'編集を終了':'位置を編集';saveBtn.disabled=resetBtn.disabled=copyBtn.disabled=!on}
-editToggle.onclick=()=>edit(!editMode);saveBtn.onclick=()=>{saved=collect();localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));msg('このブラウザに位置を保存しました')};resetBtn.onclick=()=>{defaults();localStorage.removeItem(STORAGE_KEY);saved={};msg('初期位置に戻しました')};copyBtn.onclick=async()=>{const t=JSON.stringify(collect(),null,2);try{await navigator.clipboard.writeText(t);msg('配置データをコピーしました')}catch(_){prompt('配置データ',t)}};
+speechSynthesis.getVoices();
+if('onvoiceschanged' in speechSynthesis)speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();
+function chooseUSVoice(){
+ const voices=speechSynthesis.getVoices(),us=voices.filter(v=>/^en-US$/i.test(v.lang)||/^en_US$/i.test(v.lang));
+ for(const re of [/Samantha/i,/Ava/i,/Allison/i,/Susan/i,/Alex/i,/Google US English/i,/Microsoft Aria/i,/Microsoft Jenny/i]){const v=us.find(v=>re.test(v.name));if(v)return v}
+ return us[0]||voices.find(v=>/^en/i.test(v.lang))||null;
+}
+function speak(word,b){
+ speechSynthesis.cancel();
+ document.querySelectorAll('.audio-btn.playing').forEach(x=>{x.classList.remove('playing');x.innerHTML=playIcon+`<span>${x.dataset.word}</span>`;});
+ const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=.82;u.pitch=1;const v=chooseUSVoice();if(v)u.voice=v;
+ b.classList.add('playing');b.innerHTML=pauseIcon+`<span>${word}</span>`;
+ u.onend=u.onerror=()=>{b.classList.remove('playing');b.innerHTML=playIcon+`<span>${word}</span>`;};
+ speechSynthesis.speak(u);
+}
+for(let p=1;p<=6;p++){
+ const s=document.createElement('div');s.className='slide';s.dataset.page=p;
+ const img=document.createElement('img');img.src=`pages/page-${p}.jpg`;img.alt=`フォニックス c & k ページ ${p}`;s.appendChild(img);
+ (hotspots[p]||[]).forEach(([word,x,y])=>{
+  const key=`${p}:${word}`,pos=saved[key]||{x,y};
+  const b=document.createElement('button');
+  b.className='audio-btn';b.dataset.word=word;b.dataset.page=p;b.style.left=pos.x+'%';b.style.top=pos.y+'%';
+  b.innerHTML=playIcon+`<span>${word}</span>`;b.setAttribute('aria-label',word+' の発音を再生');
+  b.addEventListener('click',e=>{if(editMode){e.preventDefault();return;}speak(word,b);});
+  b.addEventListener('pointerdown',e=>{if(!editMode)return;e.preventDefault();speechSynthesis.cancel();b.setPointerCapture?.(e.pointerId);drag={b,s,id:e.pointerId};});
+  b.addEventListener('pointermove',e=>{if(!editMode||!drag||drag.b!==b)return;const r=s.getBoundingClientRect();let xp=(e.clientX-r.left)/r.width*100,yp=(e.clientY-r.top)/r.height*100;xp=Math.max(1,Math.min(99,xp));yp=Math.max(2,Math.min(98,yp));b.style.left=xp.toFixed(2)+'%';b.style.top=yp.toFixed(2)+'%';});
+  const end=e=>{if(!drag||drag.b!==b)return;try{b.releasePointerCapture?.(e.pointerId)}catch(_){}drag=null;};
+  b.addEventListener('pointerup',end);b.addEventListener('pointercancel',end);
+  s.appendChild(b);
+});
+ slidesEl.appendChild(s);
+ const n=document.createElement('button');n.textContent=p;n.onclick=()=>show(p);nav.appendChild(n);
+}
+function collectLayout(){const d={};document.querySelectorAll('.audio-btn').forEach(b=>d[`${b.dataset.page}:${b.dataset.word}`]={x:parseFloat(b.style.left),y:parseFloat(b.style.top)});return d}
+function applyDefaults(){document.querySelectorAll('.audio-btn').forEach(b=>{const p=Number(b.dataset.page),item=(hotspots[p]||[]).find(([w])=>w===b.dataset.word);if(item){b.style.left=item[1]+'%';b.style.top=item[2]+'%';}})}
+function toastMsg(m){toast.textContent=m;toast.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('show'),1400)}
+function setEditMode(on){editMode=on;document.body.classList.toggle('edit-mode',on);editToggle.textContent=on?'編集を終了':'位置を編集';saveBtn.disabled=resetBtn.disabled=copyBtn.disabled=!on;if(on)speechSynthesis.cancel()}
+editToggle.onclick=()=>setEditMode(!editMode);
+saveBtn.onclick=()=>{saved=collectLayout();localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));toastMsg('このブラウザに位置を保存しました');};
+resetBtn.onclick=()=>{applyDefaults();localStorage.removeItem(STORAGE_KEY);saved={};toastMsg('初期位置に戻しました');};
+copyBtn.onclick=async()=>{const t=JSON.stringify(collectLayout(),null,2);try{await navigator.clipboard.writeText(t);toastMsg('配置データをコピーしました');}catch(_){prompt('配置データ',t);}};
 function show(p){current=Math.max(1,Math.min(6,p));document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===current-1));[...nav.children].forEach((b,i)=>b.classList.toggle('active',i===current-1));counter.textContent=current+' / 6';document.getElementById('prev').disabled=current===1;document.getElementById('next').disabled=current===6;speechSynthesis.cancel()}
 document.getElementById('prev').onclick=()=>show(current-1);document.getElementById('next').onclick=()=>show(current+1);document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(current-1);if(e.key==='ArrowRight')show(current+1)});show(1);
-</script></body></html>
+</script>
+</body></html>
