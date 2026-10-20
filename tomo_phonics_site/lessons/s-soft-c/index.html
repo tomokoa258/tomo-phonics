@@ -1,0 +1,181 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#8eb6cd">
+<title>Study Mate｜フォニックス s & soft c</title>
+<style>
+:root{--bg:#eef5f8;--ink:#243f4c;--accent:#0b84ff;--shadow:0 12px 32px rgba(17,47,63,.16)}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","Hiragino Sans","Yu Gothic",sans-serif}
+header{position:sticky;top:0;z-index:20;background:rgba(238,245,248,.94);backdrop-filter:blur(10px);border-bottom:1px solid rgba(36,63,76,.08)}
+.topbar{max-width:1180px;margin:auto;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;gap:12px}
+.brand{font-weight:900;font-size:20px}.brand small{font-size:12px;font-weight:700;opacity:.65;margin-left:8px}
+.nav{display:flex;gap:6px;overflow:auto;padding-bottom:1px}.nav button{border:0;background:#fff;color:var(--ink);width:34px;height:34px;border-radius:999px;font-weight:800;cursor:pointer;box-shadow:0 2px 8px rgba(17,47,63,.08)}.nav button.active{background:var(--ink);color:#fff}
+main{max-width:1180px;margin:auto;padding:22px 16px 52px}.hint{margin:0 auto 18px;text-align:center;font-size:14px;line-height:1.7;opacity:.78}
+.slide{display:none;position:relative;margin:auto;aspect-ratio:16/9;max-width:1080px;background:#fff;box-shadow:var(--shadow);overflow:hidden;border-radius:14px}.slide.active{display:block}
+.slide>img{display:block;width:100%;height:100%;object-fit:contain;user-select:none;-webkit-user-drag:none}
+.audio-btn{position:absolute;transform:translate(-50%,-50%);width:28px;height:28px;border-radius:50%;border:1.5px solid rgba(255,255,255,.98);background:rgba(11,132,255,.96);color:#fff;display:flex;align-items:center;justify-content:center;cursor:pointer;box-shadow:0 4px 10px rgba(0,78,158,.25);z-index:5}
+.audio-btn.playing{background:#143e52}.audio-btn svg{width:16px;height:16px;fill:currentColor}
+.audio-btn span{position:absolute;left:50%;top:calc(100% + 5px);transform:translateX(-50%);background:rgba(20,62,82,.94);color:#fff;padding:2px 6px;border-radius:5px;font-size:11px;white-space:nowrap;opacity:0;pointer-events:none}.audio-btn:hover span,.audio-btn:focus-visible span{opacity:1}
+.editbar{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:0 auto 14px}.editbar button{border:0;border-radius:999px;background:#fff;color:var(--ink);padding:8px 14px;font-weight:800;cursor:pointer;box-shadow:0 3px 10px rgba(17,47,63,.09)}.editbar button.primary{background:var(--ink);color:#fff}.editbar button:disabled{opacity:.45;cursor:not-allowed}.edit-note{text-align:center;font-size:12px;opacity:.7;margin:-4px 0 14px;display:none}body.edit-mode .edit-note{display:block}body.edit-mode .audio-btn{outline:2px dashed rgba(11,132,255,.45);outline-offset:4px;cursor:grab;touch-action:none}.controls{display:flex;justify-content:center;align-items:center;gap:12px;margin-top:18px}.controls button{border:0;border-radius:999px;background:#fff;color:var(--ink);padding:10px 18px;font-weight:800;cursor:pointer;box-shadow:0 4px 14px rgba(17,47,63,.09)}.controls button:disabled{opacity:.4;cursor:default}.counter{min-width:76px;text-align:center;font-weight:800}.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);background:#143e52;color:#fff;padding:10px 14px;border-radius:999px;font-size:13px;font-weight:700;opacity:0;pointer-events:none;transition:opacity .2s;z-index:50}.toast.show{opacity:1}
+footer{text-align:center;font-size:12px;opacity:.58;padding:0 16px 36px}
+@media(max-width:700px){.topbar{padding:10px 12px}.brand{font-size:17px}.brand small{display:none}main{padding:12px 8px 36px}.slide{border-radius:8px}.audio-btn{width:23px;height:23px}.audio-btn svg{width:13px;height:13px}.hint{font-size:12px;margin-bottom:10px}}
+</style>
+</head>
+<body>
+<header><div class="topbar"><div class="brand">Study Mate <small>フォニックス｜s & soft c</small></div><div class="nav" id="nav"></div></div></header>
+<main>
+<p class="hint">スライドは元画像をそのまま表示しています。3・5ページの青い 🔊 ボタンで単語の発音を確認できます。</p>
+<div class="editbar">
+  <button id="editToggle" class="primary">位置を編集</button>
+  <button id="saveLayout" disabled>位置を保存</button>
+  <button id="resetLayout" disabled>初期位置に戻す</button>
+  <button id="copyLayout" disabled>配置データをコピー</button>
+</div>
+<div class="edit-note">編集モード中：青いスピーカーボタンをドラッグして移動できます。</div>
+<section id="slides"></section>
+<div class="controls"><button id="prev">← 前へ</button><div class="counter" id="counter"></div><button id="next">次へ →</button></div>
+</main>
+<div class="toast" id="toast"></div>
+<footer>© Study Mate</footer>
+<script>
+const playIcon=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 16.5 12zm0-8.5v2.06A8 8 0 0 1 20 12a8 8 0 0 1-3.5 6.44v2.06A10 10 0 0 0 22 12a10 10 0 0 0-5.5-8.5z"/></svg>`;
+const pauseIcon=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>`;
+const hotspots={
+  "3": [
+    [
+      "sun",
+      53,
+      42
+    ],
+    [
+      "sad",
+      53,
+      55.5
+    ],
+    [
+      "snake",
+      55,
+      69
+    ],
+    [
+      "speak",
+      55,
+      82
+    ],
+    [
+      "lips",
+      94,
+      42
+    ],
+    [
+      "gas",
+      94,
+      55.5
+    ],
+    [
+      "minus",
+      94,
+      69
+    ],
+    [
+      "mouse",
+      94,
+      82
+    ]
+  ],
+  "5": [
+    [
+      "cent",
+      54,
+      42
+    ],
+    [
+      "circle",
+      56,
+      55.5
+    ],
+    [
+      "cereal",
+      57,
+      69
+    ],
+    [
+      "city",
+      54,
+      82
+    ],
+    [
+      "decide",
+      95,
+      42
+    ],
+    [
+      "recipe",
+      94,
+      55.5
+    ],
+    [
+      "bicycle",
+      95,
+      69
+    ],
+    [
+      "cancel",
+      95,
+      82
+    ]
+  ]
+};
+const slidesEl=document.getElementById('slides'),nav=document.getElementById('nav'),counter=document.getElementById('counter');
+const editToggle=document.getElementById('editToggle'),saveBtn=document.getElementById('saveLayout'),resetBtn=document.getElementById('resetLayout'),copyBtn=document.getElementById('copyLayout'),toast=document.getElementById('toast');
+const STORAGE_KEY='study-mate-s-soft-c-layout-v1';
+let saved={};try{saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(_){}
+let current=1,editMode=false,drag=null;
+speechSynthesis.getVoices();
+if('onvoiceschanged' in speechSynthesis)speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();
+function chooseUSVoice(){
+ const voices=speechSynthesis.getVoices(),us=voices.filter(v=>/^en-US$/i.test(v.lang)||/^en_US$/i.test(v.lang));
+ for(const re of [/Samantha/i,/Ava/i,/Allison/i,/Susan/i,/Alex/i,/Google US English/i,/Microsoft Aria/i,/Microsoft Jenny/i]){const v=us.find(v=>re.test(v.name));if(v)return v}
+ return us[0]||voices.find(v=>/^en/i.test(v.lang))||null;
+}
+function speak(word,b){
+ speechSynthesis.cancel();
+ document.querySelectorAll('.audio-btn.playing').forEach(x=>{x.classList.remove('playing');x.innerHTML=playIcon+`<span>${x.dataset.word}</span>`;});
+ const u=new SpeechSynthesisUtterance(word);u.lang='en-US';u.rate=.82;u.pitch=1;const v=chooseUSVoice();if(v)u.voice=v;
+ b.classList.add('playing');b.innerHTML=pauseIcon+`<span>${word}</span>`;
+ u.onend=u.onerror=()=>{b.classList.remove('playing');b.innerHTML=playIcon+`<span>${word}</span>`;};
+ speechSynthesis.speak(u);
+}
+for(let p=1;p<=6;p++){
+ const s=document.createElement('div');s.className='slide';s.dataset.page=p;
+ const img=document.createElement('img');img.src=`pages/page-${p}.jpg`;img.alt=`フォニックス s & soft c ページ ${p}`;s.appendChild(img);
+ (hotspots[p]||[]).forEach(([word,x,y])=>{
+  const key=`${p}:${word}`,pos=saved[key]||{x,y};
+  const b=document.createElement('button');
+  b.className='audio-btn';b.dataset.word=word;b.dataset.page=p;b.style.left=pos.x+'%';b.style.top=pos.y+'%';
+  b.innerHTML=playIcon+`<span>${word}</span>`;b.setAttribute('aria-label',word+' の発音を再生');
+  b.addEventListener('click',e=>{if(editMode){e.preventDefault();return;}speak(word,b);});
+  b.addEventListener('pointerdown',e=>{if(!editMode)return;e.preventDefault();speechSynthesis.cancel();b.setPointerCapture?.(e.pointerId);drag={b,s,id:e.pointerId};});
+  b.addEventListener('pointermove',e=>{if(!editMode||!drag||drag.b!==b)return;const r=s.getBoundingClientRect();let xp=(e.clientX-r.left)/r.width*100,yp=(e.clientY-r.top)/r.height*100;xp=Math.max(1,Math.min(99,xp));yp=Math.max(2,Math.min(98,yp));b.style.left=xp.toFixed(2)+'%';b.style.top=yp.toFixed(2)+'%';});
+  const end=e=>{if(!drag||drag.b!==b)return;try{b.releasePointerCapture?.(e.pointerId)}catch(_){}drag=null;};
+  b.addEventListener('pointerup',end);b.addEventListener('pointercancel',end);
+  s.appendChild(b);
+});
+ slidesEl.appendChild(s);
+ const n=document.createElement('button');n.textContent=p;n.onclick=()=>show(p);nav.appendChild(n);
+}
+function collectLayout(){const d={};document.querySelectorAll('.audio-btn').forEach(b=>d[`${b.dataset.page}:${b.dataset.word}`]={x:parseFloat(b.style.left),y:parseFloat(b.style.top)});return d}
+function applyDefaults(){document.querySelectorAll('.audio-btn').forEach(b=>{const p=Number(b.dataset.page),item=(hotspots[p]||[]).find(([w])=>w===b.dataset.word);if(item){b.style.left=item[1]+'%';b.style.top=item[2]+'%';}})}
+function toastMsg(m){toast.textContent=m;toast.classList.add('show');clearTimeout(toast._t);toast._t=setTimeout(()=>toast.classList.remove('show'),1400)}
+function setEditMode(on){editMode=on;document.body.classList.toggle('edit-mode',on);editToggle.textContent=on?'編集を終了':'位置を編集';saveBtn.disabled=resetBtn.disabled=copyBtn.disabled=!on;if(on)speechSynthesis.cancel()}
+editToggle.onclick=()=>setEditMode(!editMode);
+saveBtn.onclick=()=>{saved=collectLayout();localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));toastMsg('このブラウザに位置を保存しました');};
+resetBtn.onclick=()=>{applyDefaults();localStorage.removeItem(STORAGE_KEY);saved={};toastMsg('初期位置に戻しました');};
+copyBtn.onclick=async()=>{const t=JSON.stringify(collectLayout(),null,2);try{await navigator.clipboard.writeText(t);toastMsg('配置データをコピーしました');}catch(_){prompt('配置データ',t);}};
+function show(p){current=Math.max(1,Math.min(6,p));document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===current-1));[...nav.children].forEach((b,i)=>b.classList.toggle('active',i===current-1));counter.textContent=current+' / 6';document.getElementById('prev').disabled=current===1;document.getElementById('next').disabled=current===6;speechSynthesis.cancel()}
+document.getElementById('prev').onclick=()=>show(current-1);document.getElementById('next').onclick=()=>show(current+1);document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(current-1);if(e.key==='ArrowRight')show(current+1)});show(1);
+</script>
+</body></html>
