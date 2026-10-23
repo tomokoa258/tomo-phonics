@@ -27,7 +27,7 @@ footer{text-align:center;font-size:12px;opacity:.58;padding:0 16px 36px}
 <body>
 <header><div class="topbar"><div class="brand">Study Mate <small>フォニックス｜y & z</small></div><div class="nav" id="nav"></div></div></header>
 <main>
-<p class="hint">スライドは元画像をそのまま表示しています。3・5ページの青い 🔊 ボタンで単語の発音を確認できます。</p>
+<p class="hint">スライドは元画像をそのまま表示しています。3・6ページの青い 🔊 ボタンで単語の発音を確認できます。</p>
 <div class="editbar">
   <button id="editToggle" class="primary">位置を編集</button>
   <button id="saveLayout" disabled>位置を保存</button>
@@ -48,7 +48,7 @@ const hotspots={
 ['yellow',57.78,39.67],['year',53.98,53.66],['yen',52.78,67.0],['yes',52.31,80.66],
 ['beyond',96.3,40.33],['kayak',93.06,53.83],['lawyer',94.35,67.65],['New York',96.76,76.87]
 ],
-5:[
+6:[
 ['zoo',54.26,42.3],['zip',53.15,55.8],['zero',55.74,69.14],['zebra',57.87,82.47],
 ['lazy',91.3,42.47],['size',90.93,55.64],['quiz',91.94,68.31],['amazing',96.85,78.19]
 ]
@@ -57,6 +57,7 @@ const slidesEl=document.getElementById('slides'),nav=document.getElementById('na
 const editToggle=document.getElementById('editToggle'),saveBtn=document.getElementById('saveLayout'),resetBtn=document.getElementById('resetLayout'),copyBtn=document.getElementById('copyLayout'),toast=document.getElementById('toast');
 const STORAGE_KEY='study-mate-yz-layout-v1';
 let saved={};try{saved=JSON.parse(localStorage.getItem(STORAGE_KEY)||'{}')}catch(_){}
+(hotspots[6]||[]).forEach(([word])=>{const oldKey=`5:${word}`,newKey=`6:${word}`;if(saved[oldKey]&&!saved[newKey])saved[newKey]=saved[oldKey]});
 let current=1,editMode=false,drag=null;
 speechSynthesis.getVoices();
 if('onvoiceschanged' in speechSynthesis)speechSynthesis.onvoiceschanged=()=>speechSynthesis.getVoices();
@@ -73,7 +74,7 @@ function speak(word,b){
  u.onend=u.onerror=()=>{b.classList.remove('playing');b.innerHTML=playIcon+`<span>${word}</span>`;};
  speechSynthesis.speak(u);
 }
-for(let p=1;p<=6;p++){
+for(let p=1;p<=7;p++){
  const s=document.createElement('div');s.className='slide';s.dataset.page=p;
  const img=document.createElement('img');img.src=`pages/page-${p}.jpg`;img.alt=`フォニックス y & z ページ ${p}`;s.appendChild(img);
  (hotspots[p]||[]).forEach(([word,x,y])=>{
@@ -99,7 +100,7 @@ editToggle.onclick=()=>setEditMode(!editMode);
 saveBtn.onclick=()=>{saved=collectLayout();localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));toastMsg('このブラウザに位置を保存しました');};
 resetBtn.onclick=()=>{applyDefaults();localStorage.removeItem(STORAGE_KEY);saved={};toastMsg('初期位置に戻しました');};
 copyBtn.onclick=async()=>{const t=JSON.stringify(collectLayout(),null,2);try{await navigator.clipboard.writeText(t);toastMsg('配置データをコピーしました');}catch(_){prompt('配置データ',t);}};
-function show(p){current=Math.max(1,Math.min(6,p));document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===current-1));[...nav.children].forEach((b,i)=>b.classList.toggle('active',i===current-1));counter.textContent=current+' / 6';document.getElementById('prev').disabled=current===1;document.getElementById('next').disabled=current===6;speechSynthesis.cancel()}
+function show(p){current=Math.max(1,Math.min(7,p));document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===current-1));[...nav.children].forEach((b,i)=>b.classList.toggle('active',i===current-1));counter.textContent=current+' / 7';document.getElementById('prev').disabled=current===1;document.getElementById('next').disabled=current===7;speechSynthesis.cancel()}
 document.getElementById('prev').onclick=()=>show(current-1);document.getElementById('next').onclick=()=>show(current+1);document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(current-1);if(e.key==='ArrowRight')show(current+1)});show(1);
 </script>
 </body></html>
