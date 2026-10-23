@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#8eb6cd">
-<title>Study Mate｜フォニックス s & soft c</title>
+<title>Study Mate｜フォニックス s &amp; soft c</title>
 <style>
 :root{--bg:#eef5f8;--ink:#243f4c;--accent:#0b84ff;--shadow:0 12px 32px rgba(17,47,63,.16)}
 *{box-sizing:border-box}html{scroll-behavior:smooth}
@@ -24,18 +24,19 @@ footer{text-align:center;font-size:12px;opacity:.58;padding:0 16px 36px}
 </style>
 </head>
 <body>
-<header><div class="topbar"><div class="brand">Study Mate <small>フォニックス｜s & soft c</small></div><div class="nav" id="nav"></div></div></header>
+<header><div class="topbar"><div class="brand">Study Mate <small>フォニックス｜s &amp; soft c</small></div><div class="nav" id="nav"></div></div></header>
 <main>
-<p class="hint">スライドは元画像をそのまま表示しています。3・5ページの青い 🔊 ボタンで単語の発音を確認できます。</p>
+<p class="hint">スライドは元画像をそのまま表示しています。4・7ページの青い 🔊 ボタンで単語の発音を確認できます。</p>
 <section id="slides"></section>
 <div class="controls"><button id="prev">← 前へ</button><div class="counter" id="counter"></div><button id="next">次へ →</button></div>
 </main>
 <footer>© Study Mate</footer>
 <script>
+const pageCount=8;
 const playIcon=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9v6h4l5 4V5L7 9H3zm13.5 3a4.5 4.5 0 0 0-2.5-4.03v8.06A4.5 4.5 0 0 0 16.5 12zm0-8.5v2.06A8 8 0 0 1 20 12a8 8 0 0 1-3.5 6.44v2.06A10 10 0 0 0 22 12a10 10 0 0 0-5.5-8.5z"/></svg>`;
 const pauseIcon=`<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 5h4v14H6zm8 0h4v14h-4z"/></svg>`;
 const hotspots={
-  3:[
+  4:[
     ['sun',53.81,42.2],
     ['sad',53.9,55.53],
     ['snake',58.07,69.19],
@@ -45,7 +46,7 @@ const hotspots={
     ['minus',95.94,69.52],
     ['mouse',96.68,83.35]
   ],
-  5:[
+  7:[
     ['cent',55.94,42],
     ['circle',57.79,55.33],
     ['cereal',58.99,69.32],
@@ -73,7 +74,7 @@ function speak(word,b){
  u.onend=u.onerror=()=>{b.classList.remove('playing');b.innerHTML=playIcon+`<span>${word}</span>`;};
  speechSynthesis.speak(u);
 }
-for(let p=1;p<=6;p++){
+for(let p=1;p<=pageCount;p++){
  const s=document.createElement('div');s.className='slide';s.dataset.page=p;
  const img=document.createElement('img');img.src=`pages/page-${p}.jpg`;img.alt=`フォニックス s & soft c ページ ${p}`;s.appendChild(img);
  (hotspots[p]||[]).forEach(([word,x,y])=>{
@@ -87,12 +88,12 @@ for(let p=1;p<=6;p++){
  const n=document.createElement('button');n.textContent=p;n.onclick=()=>show(p);nav.appendChild(n);
 }
 function show(p){
- current=Math.max(1,Math.min(6,p));
+ current=Math.max(1,Math.min(pageCount,p));
  document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===current-1));
  [...nav.children].forEach((b,i)=>b.classList.toggle('active',i===current-1));
- counter.textContent=current+' / 6';
+ counter.textContent=current+' / '+pageCount;
  document.getElementById('prev').disabled=current===1;
- document.getElementById('next').disabled=current===6;
+ document.getElementById('next').disabled=current===pageCount;
  speechSynthesis.cancel();
 }
 document.getElementById('prev').onclick=()=>show(current-1);
