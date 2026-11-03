@@ -27,7 +27,7 @@ footer{text-align:center;font-size:12px;opacity:.58;padding:0 16px 36px}
 <body>
 <header><div class="topbar"><div class="brand">Study Mate <small>フォニックス｜short a & long a</small></div><div class="nav" id="nav"></div></div></header>
 <main>
-<p class="hint">スライドは元画像をそのまま表示しています。3・5・7・8ページの青い 🔊 ボタンで単語の発音を確認できます。</p>
+<p class="hint">スライドは元画像をそのまま表示しています。3・5ページの青い 🔊 ボタンで単語の発音を確認できます。</p>
 <div class="editbar">
   <button id="editToggle" class="primary">位置を編集</button>
   <button id="saveLayout" disabled>位置を保存</button>
@@ -51,14 +51,6 @@ const hotspots={
 5:[
 ['apron',56,42],['acorn',55,55.5],['April',54,69],['agent',55,82.5],
 ['baby',92,42],['table',93,55.5],['lady',92,69],['tomato',96,82.5]
-],
-7:[
-['ambulance',51,39],['astronaut',51,53],['arrow',45,66],['anchor',48,80],
-['ant',69,39],['angry',73,53],['alien',70,66],['avocado',76,80]
-],
-8:[
-['ambulance',51,39],['astronaut',51,53],['arrow',45,66],['anchor',48,80],
-['ant',69,39],['angry',73,53],['alien',70,66],['avocado',76,80]
 ]
 };
 const slidesEl=document.getElementById('slides'),nav=document.getElementById('nav'),counter=document.getElementById('counter');
@@ -107,7 +99,7 @@ editToggle.onclick=()=>setEditMode(!editMode);
 saveBtn.onclick=()=>{saved=collectLayout();localStorage.setItem(STORAGE_KEY,JSON.stringify(saved));toastMsg('このブラウザに位置を保存しました');};
 resetBtn.onclick=()=>{applyDefaults();localStorage.removeItem(STORAGE_KEY);saved={};toastMsg('初期位置に戻しました');};
 copyBtn.onclick=async()=>{const t=JSON.stringify(collectLayout(),null,2);try{await navigator.clipboard.writeText(t);toastMsg('配置データをコピーしました');}catch(_){prompt('配置データ',t);}};
-function show(p){current=Math.max(1,Math.min(7,p));document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===current-1));[...nav.children].forEach((b,i)=>b.classList.toggle('active',i===current-1));counter.textContent=current+' / 7';document.getElementById('prev').disabled=current===1;document.getElementById('next').disabled=current===7;speechSynthesis.cancel()}
+function show(p){current=Math.max(1,Math.min(8,p));document.querySelectorAll('.slide').forEach((s,i)=>s.classList.toggle('active',i===current-1));[...nav.children].forEach((b,i)=>b.classList.toggle('active',i===current-1));counter.textContent=current+' / 8';document.getElementById('prev').disabled=current===1;document.getElementById('next').disabled=current===8;speechSynthesis.cancel()}
 document.getElementById('prev').onclick=()=>show(current-1);document.getElementById('next').onclick=()=>show(current+1);document.addEventListener('keydown',e=>{if(e.key==='ArrowLeft')show(current-1);if(e.key==='ArrowRight')show(current+1)});show(1);
 </script>
 </body></html>
